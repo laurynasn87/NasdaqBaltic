@@ -1,0 +1,10 @@
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\NasdaqBalticGUI.exe.config
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\NasdaqBalticGUI.exe
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\NasdaqBalticGUI.pdb
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.csprojAssemblyReference.cache
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.Login.resources
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.Properties.Resources.resources
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.csproj.GenerateResource.cache
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.csproj.CoreCompileInputs.cache
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.exe
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.pdb
