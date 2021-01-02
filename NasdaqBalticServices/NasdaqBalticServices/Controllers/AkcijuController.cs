@@ -33,22 +33,5 @@ namespace NasdaqBalticServices
             }
             return null;
         }
-        // POST api/AkcijosController
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/AkcijosController/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/AkcijosController/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

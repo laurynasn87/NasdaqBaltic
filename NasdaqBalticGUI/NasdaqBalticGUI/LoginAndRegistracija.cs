@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -9,27 +10,26 @@ namespace NasdaqBalticGUI
 {
     class LoginAndRegistracija
     {
-        string Url = "https://localhost:44355/api/VartotojasController";
+        string Url = "https://localhost:44319/api/Vartotojai";
         string Vardas;
-        string Slaptazdodis;
+        string Slaptazodis;
         ApiKontroleris api = new ApiKontroleris();
 
         public LoginAndRegistracija(string vardas, string slaptazodis)
         {
             this.Vardas = vardas;
-            this.Slaptazdodis = slaptazodis;
+            this.Slaptazodis = slaptazodis;
         }
-        public bool BandytiPrisijungti()
+        public bool BandytiPrisijungti(out Vartotojas dabartinisNaudotojas)
         {
-            bool rezultatas = false;
             var reiksmes = new Dictionary<string, string>
             {
                 { "Vardas", Vardas },
-                { "Slaptazdodis", Slaptazdodis }
+                { "Slaptazodis", Slaptazodis }
             };
-            rezultatas = Task.Run(async () => await api.ApiCallAsync(reiksmes, Url + "/Autentifikuoti")).Result;
-
-            return rezultatas;
+           // rezultatas = Task.Run(async () => await api.ApiCallAsync(reiksmes, Url + "/Autentifikuoti")).Result;
+           dabartinisNaudotojas = api.ApiCallResponseObject<Vartotojas>(reiksmes, Url + "/Autentifikuoti");
+            return dabartinisNaudotojas != null;
         }
         public bool BandytiRegistruoti()
         {
@@ -37,7 +37,7 @@ namespace NasdaqBalticGUI
             var reiksmes = new Dictionary<string, string>
             {
                 { "Vardas", Vardas },
-                { "Slaptazdodis", Slaptazdodis }
+                { "Slaptazodis", Slaptazodis }
             };
             rezultatas = Task.Run(async () => await api.ApiCallAsync(reiksmes, Url + "/Create")).Result;
 

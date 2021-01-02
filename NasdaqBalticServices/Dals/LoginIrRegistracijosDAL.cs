@@ -21,8 +21,9 @@ namespace DALs
 
             return sQLCommands.Insert(tuples, LoginIrRegistracijosTablePavadinimas);
         }
-        public bool ArTeisingiLogin(Vartotojas PrisijungimoDuomenys)
+        public bool ArTeisingiLogin(Vartotojas PrisijungimoDuomenys, out Vartotojas gautasVarototjas)
         {
+            gautasVarototjas = new Vartotojas();
             if (!String.IsNullOrEmpty(PrisijungimoDuomenys.Vardas) && !String.IsNullOrEmpty(PrisijungimoDuomenys.Slaptazodis))
             {
                 List<List<Tuple<string, string>>> result = sQLCommands.GetByCondition(LoginIrRegistracijosTablePavadinimas, new List<Tuple<string, string>>() { new Tuple<string, string>("Vardas", PrisijungimoDuomenys.Vardas), new Tuple<string, string>("Slaptazodis", PrisijungimoDuomenys.Slaptazodis) }, 1);
@@ -36,6 +37,8 @@ namespace DALs
                 }
                 if (rezultatas != null && rezultatas.Id != 0)
                 {
+                    gautasVarototjas = rezultatas;
+                    gautasVarototjas.Slaptazodis = String.Empty;
                     return true;
                 }
             }

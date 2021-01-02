@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Xml.Linq;
 
 namespace Database
@@ -15,7 +17,7 @@ namespace Database
         public static IDictionary<string, string> ConnStrings = new Dictionary<string, string>();
         public SQLCommands()
         {
-            ConnStrings = ReadConfig(XDocument.Load(@"app.xml"));
+            ConnStrings = ReadConfig(XDocument.Load(AppDomain.CurrentDomain.BaseDirectory + "app.xml"));
             this.databaseConnection = new MySqlConnection(ConnStrings["Database"]);
             databaseConnection.Open();
         }

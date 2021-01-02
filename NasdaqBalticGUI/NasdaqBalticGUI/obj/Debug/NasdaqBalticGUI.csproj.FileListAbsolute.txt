@@ -8,3 +8,16 @@ C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqB
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.csproj.CoreCompileInputs.cache
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.exe
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.pdb
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Flurl.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Flurl.Http.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\System.ValueTuple.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Flurl.pdb
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Flurl.xml
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Flurl.Http.pdb
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\System.ValueTuple.xml
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.csproj.CopyComplete
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Models.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Models.pdb
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.PagrindinisLangas.resources

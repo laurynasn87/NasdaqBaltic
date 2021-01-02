@@ -16,7 +16,7 @@ namespace NasdaqBalticServices
     {
         // POST: api/VartotojasController/Create
         [HttpPost]
-        public HttpStatusCode Create(Dictionary<string, string> keys)
+        public HttpStatusCode Create([FromBody] Dictionary<string, string> keys)
         {
             string Vardas = String.Empty;
             String Slaptazodis = string.Empty;
@@ -33,7 +33,7 @@ namespace NasdaqBalticServices
         }
         // POST: api/VartotojasController/Autentifikuoti 
         [HttpPost]
-        public HttpStatusCode Post(Dictionary<string, string> keys)
+        public HttpStatusCode Post([FromBody] Dictionary<string, string> keys)
         {
             string Vardas = String.Empty;
             String Slaptazodis = string.Empty;
