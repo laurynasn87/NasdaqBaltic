@@ -21,3 +21,6 @@ C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqB
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Models.dll
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\Models.pdb
 C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.PagrindinisLangas.resources
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\bin\Debug\lt\NasdaqBalticGUI.resources.dll
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\NasdaqBalticGUI.PagrindinisLangas.lt.resources
+C:\Users\Laurynas\source\repos\NasdaqBaltic\NasdaqBaltic\NasdaqBalticGUI\NasdaqBalticGUI\obj\Debug\lt\NasdaqBalticGUI.resources.dll

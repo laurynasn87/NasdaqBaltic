@@ -6,21 +6,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Dals
+namespace DALs
 {
-    public class AkcijuDAL : IDisposable
+    public class AkcijuDAL
     {
-        SQLCommands sQLCommands = new Database.SQLCommands();
+        SQLCommands sQLCommands;
+        String DefaultDatabaseConn = "Database";
         FinansinesInformacijosDAL finansinisDal = new FinansinesInformacijosDAL();
         PapildomosInformacijosDAL papildomosInfDal = new PapildomosInformacijosDAL();
         const string AkcijuTablePavadinimas = "akcijos";
-        public void Dispose()
+        public AkcijuDAL()
         {
-
+            sQLCommands = new Database.SQLCommands(DefaultDatabaseConn);
+        }
+        public AkcijuDAL(string DatbaseConnectionName)
+        {
+            sQLCommands = new Database.SQLCommands(DatbaseConnectionName);
         }
         public bool Ivesti(Akcijos akcija)
         {
-            List<Tuple<string, string>> tuples = akcija.PaverstAkcijaITupleList();
+            List<string> IgnoreColumns = new List<string>();
+            IgnoreColumns.Add("finansineInformacija");
+            IgnoreColumns.Add("papildomaInformacija");
+
+            List<Tuple<string, string>> tuples = akcija.PaverstAkcijaITupleList(IgnoreColumns);
 
             return sQLCommands.Insert(tuples, AkcijuTablePavadinimas);
         }
@@ -66,7 +75,11 @@ namespace Dals
 
         public bool Atnaujinti(Akcijos akcija)
         {
-            List<Tuple<string, string>> tuples = akcija.PaverstAkcijaITupleList();
+            List<string> IgnoreColumns = new List<string>();
+            IgnoreColumns.Add("finansineInformacija");
+            IgnoreColumns.Add("papildomaInformacija");
+
+            List<Tuple<string, string>> tuples = akcija.PaverstAkcijaITupleList(IgnoreColumns);
 
             return sQLCommands.Update(tuples, AkcijuTablePavadinimas, "AkcijosKodas", akcija.AkcijosKodas);
         }

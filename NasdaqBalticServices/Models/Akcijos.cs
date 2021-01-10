@@ -24,8 +24,13 @@ namespace Models
         {
             this.AkcijosKodas = AkcijosKodas;
             this.Pavadinimas = Pavadinimas;
+            KintamujuMapping = GetMapping();
         }
-
+        public Akcijos(string AkcijosKodas)
+        {
+            this.AkcijosKodas = AkcijosKodas;
+            KintamujuMapping = GetMapping();
+        }
         public List<Tuple<string, string>> PaverstAkcijaITupleList(List<string> IgnoreList = null)
         {
             return PaverstObjektaITupleList(this, IgnoreList);
@@ -44,6 +49,10 @@ namespace Models
 
             return KintamujuMapping;
         }
-
+        public override bool Equals(object o)
+        {
+            if (!(o is Akcijos)) { return false; }
+            return ((Akcijos)o).AkcijosKodas.Equals(this.AkcijosKodas) && ((Akcijos)o).Pavadinimas.Equals(this.Pavadinimas) && ((Akcijos)o).finansineInformacija.Equals(this.finansineInformacija) && ((Akcijos)o).papildomaInformacija.Equals(this.papildomaInformacija);
+        }
     }
 }

@@ -44,7 +44,10 @@ namespace Models
                 {
                     Tuple<string, string> Mapping = KintamujuMapping.Find(x => x.Item1.Equals(kintamasisi.Item1));
                     if (Mapping != null)
+                    {
                         SetObjectProperty(Mapping.Item2, kintamasisi.Item2, Objetkas);
+                    }
+                        
                 }
             }
             return Objetkas;
@@ -58,13 +61,25 @@ namespace Models
                     continue;
                 if (IgnoravimoSar != null && IgnoravimoSar.Count > 0 && IgnoravimoSar.Contains(prop.Name))
                     continue;
-
-                string pav = prop.Name;
-                var value = prop.GetValue(this);
-                if (!String.IsNullOrEmpty(pav) && value != null)
+                try
                 {
-                    pav = this.KonvertuotiDbVardaIObjektoVarda(pav, false);
-                    tuples.Add(new Tuple<string, string>(pav, value.ToString()));
+                    string pav = prop.Name;
+                    var value = prop.GetValue(Objektas);
+                    if (!String.IsNullOrEmpty(pav) && value != null)
+                    {
+                        if (prop.PropertyType == typeof(DateTime))
+                        {
+                            DateTime date = (DateTime)value;
+                            if (date.Year == 1) value = DateTime.Now;
+                            value = date.ToString("yyyy-MM-dd HH:mm:ss");
+                        }
+                        pav = this.KonvertuotiDbVardaIObjektoVarda(pav, false);
+                        tuples.Add(new Tuple<string, string>(pav, value.ToString()));
+                    }
+                }
+                catch(System.Reflection.TargetException err)
+                {
+
                 }
             }
             return tuples;
@@ -91,6 +106,26 @@ namespace Models
                 }
             }
             return result;
+        }
+        public bool ArIdentiski(Object v1, Object v2, List<string> IgnoreList = null)
+        {
+            foreach (PropertyInfo prop in v1.GetType().GetProperties())
+            {
+                if (IgnoreList != null && IgnoreList.Count > 0)
+                {
+                    if (IgnoreList.Contains(prop.Name))
+                        continue;
+                }
+
+                var v1Value = prop.GetValue(v1);
+                var v2Value = prop.GetValue(v2);
+                if (v1Value != v2Value)
+                {
+                    return false;
+                }
+
+            }
+            return true;
         }
     }
 }

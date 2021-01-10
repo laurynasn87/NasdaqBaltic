@@ -8,9 +8,17 @@ namespace DALs
 {
    public class LoginIrRegistracijosDAL
     {
-        SQLCommands sQLCommands = new Database.SQLCommands();
+        SQLCommands sQLCommands;
+        String DefaultDatabaseConn = "Database";
         const string LoginIrRegistracijosTablePavadinimas = "users";
-
+        public LoginIrRegistracijosDAL()
+        {
+            sQLCommands = new Database.SQLCommands(DefaultDatabaseConn);
+        }
+        public LoginIrRegistracijosDAL(string DatbaseConnectionName)
+        {
+            sQLCommands = new Database.SQLCommands(DatbaseConnectionName);
+        }
         public bool Ivesti(Vartotojas vartotojas)
         {
             List<string> IgnoreColumns = new List<string>();
@@ -28,6 +36,7 @@ namespace DALs
             {
                 List<List<Tuple<string, string>>> result = sQLCommands.GetByCondition(LoginIrRegistracijosTablePavadinimas, new List<Tuple<string, string>>() { new Tuple<string, string>("Vardas", PrisijungimoDuomenys.Vardas), new Tuple<string, string>("Slaptazodis", PrisijungimoDuomenys.Slaptazodis) }, 1);
                 Vartotojas rezultatas = new Vartotojas();
+                if (result!= null && result.Count>0)
                 foreach (List<Tuple<string, string>> vienasVarototjas in result)
                 {
                     if (vienasVarototjas.Count > 0 && rezultatas.Id == 0)

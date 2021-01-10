@@ -1,4 +1,4 @@
-﻿using Dals;
+﻿using DALs;
 using HtmlAgilityPack;
 using Models;
 using System;
@@ -34,6 +34,7 @@ namespace BackgroundServices
             new Tuple<string, string>("Apyvarta €","finansineInformacija.Apyvarta"),
             new Tuple<string, string>("Didžiausia kaina","papildomaInformacija.Didziausia_Kaina"),
             new Tuple<string, string>("Mažiausia kaina","papildomaInformacija.Maziausia_Kaina"),
+            new Tuple<string, string>("Atidarymo kaina","papildomaInformacija.Atidarymo_Kaina"),
             new Tuple<string, string>("Vid.","papildomaInformacija.Vidutine_Kaina"),
             new Tuple<string, string>("FI","papildomaInformacija.AtaskaitosURL")
         };
@@ -59,7 +60,7 @@ namespace BackgroundServices
                     if (DbInformacija != null)
                     {
                     
-                        if (!DbInformacija.ArIdentiski(DbInformacija, papildomainf))
+                        if (!DbInformacija.ArIdentiski(DbInformacija, papildomainf, new List<string>() {"Id"}))
                             AtnaujintiPapildomaInformacija.Add(papildomainf);
                     }
                     else
@@ -200,37 +201,6 @@ namespace BackgroundServices
                                     }
 
                                 }
-
-                                /*if (Kalbos.Length-1 == i)
-                                {
-                                    for (int j=0; j<Kalbos.Length; j++)
-                                    {
-                                        if (!Kalbos[j].Equals("en"))
-                                            continue;
-
-                                        ApieIndex = VisasTekstas.IndexOf(ApieSekcijosPavadinimas[j], StringComparison.OrdinalIgnoreCase);
-                                        KontaktaiIndex = VisasTekstas.IndexOf(KontaktaiSekcijosPavadinimas[j], StringComparison.OrdinalIgnoreCase);
-                                        VadybaIndex = VisasTekstas.IndexOf(ValdybaSekcijosPavadinimas[j], StringComparison.OrdinalIgnoreCase);
-                                        papildomaInformacija.Kalba = Kalbos[j];
-
-                                        if (tekstoNode.InnerText.Contains(ValdybaSekcijosPavadinimas[j]) && String.IsNullOrEmpty(papildomaInformacija.Vadyba))
-                                        {
-                                            papildomaInformacija.Vadyba = VisasTekstas.Substring(VadybaIndex).Replace(ValdybaSekcijosPavadinimas[i], "");
-                                            papildomaInformacija.Vadyba = IstrintiPapInformacijaKitosPapInformacijos(papildomaInformacija.Vadyba, ValdybaSekcijosPavadinimas[j], new string[] { papildomaInformacija.Apie, papildomaInformacija.Kontaktai });
-                                        }
-                                        if (tekstoNode.InnerText.Contains(ApieSekcijosPavadinimas[j]) && String.IsNullOrEmpty(papildomaInformacija.Apie))
-                                        {
-                                            papildomaInformacija.Apie = VisasTekstas.Substring(ApieIndex).Replace(ApieSekcijosPavadinimas[i], "");
-                                            papildomaInformacija.Apie = IstrintiPapInformacijaKitosPapInformacijos(papildomaInformacija.Apie, ApieSekcijosPavadinimas[j], new string[] { papildomaInformacija.Vadyba, papildomaInformacija.Kontaktai });
-                                        }
-                                        if (tekstoNode.InnerText.Contains(KontaktaiSekcijosPavadinimas[j]) && String.IsNullOrEmpty(papildomaInformacija.Kontaktai))
-                                        {
-                                            papildomaInformacija.Kontaktai = VisasTekstas.Substring(KontaktaiIndex).Replace(KontaktaiSekcijosPavadinimas[i], "");
-                                            papildomaInformacija.Kontaktai = IstrintiPapInformacijaKitosPapInformacijos(papildomaInformacija.Kontaktai, KontaktaiSekcijosPavadinimas[j], new string[] { papildomaInformacija.Apie, papildomaInformacija.Vadyba });
-                                        }
-                                    }
-
-                                }*/
 
                             }
                             string tempVadyba = papildomaInformacija.Vadyba;

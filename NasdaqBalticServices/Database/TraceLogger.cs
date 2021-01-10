@@ -7,13 +7,15 @@ namespace Database
 {
     public class TraceLogger
     {
-        public void Log(string Message)
+        public bool Log(string Message)
         {
           if (!String.IsNullOrEmpty(Message))
           {
-                SQLCommands sQLCommands = new SQLCommands();
-                sQLCommands.Insert(new List<Tuple<string, string>>() { new Tuple<string, string>("Zinute", Message) }, "logs");
+                SQLCommands sQLCommands = new SQLCommands("Database");
+                bool sekmingai = sQLCommands.Insert(new List<Tuple<string, string>>() { new Tuple<string, string>("Zinute", Message) }, "logs");
+                return sekmingai;
           }
+            return false;
         }
 
     }

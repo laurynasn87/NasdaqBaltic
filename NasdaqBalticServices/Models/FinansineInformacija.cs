@@ -52,5 +52,18 @@ namespace Models
         };
             return KintamujuMapping;
         }
+        public override bool Equals(object o)
+        {
+            if (!(o is FinansineInformacija)) { return false; }
+            return ((FinansineInformacija)o).Id == this.Id && ((FinansineInformacija)o).AkcijosKodas.Equals(this.AkcijosKodas) && ((FinansineInformacija)o).Paskutine_Kaina == this.Paskutine_Kaina && ((FinansineInformacija)o).Pokytis == this.Pokytis &&
+                ((FinansineInformacija)o).PokytisProcentais == this.PokytisProcentais && ((FinansineInformacija)o).PirkimoKaina == this.PirkimoKaina && ((FinansineInformacija)o).PardavimoKaina == this.PardavimoKaina &&
+                ((FinansineInformacija)o).Sandoriai == this.Sandoriai && ((FinansineInformacija)o).Apyvarta == this.Apyvarta && ((FinansineInformacija)o).Timestamp == this.Timestamp;
+        }
+
+
+        public override int GetHashCode()
+        {
+            return this.Id;
+        }
     }
 }

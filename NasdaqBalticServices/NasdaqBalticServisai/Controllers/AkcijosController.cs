@@ -1,4 +1,4 @@
-﻿using Dals;
+﻿using DALs;
 using Models;
 using System;
 using System.Collections.Generic;

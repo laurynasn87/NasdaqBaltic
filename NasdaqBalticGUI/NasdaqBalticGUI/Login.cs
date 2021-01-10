@@ -37,8 +37,9 @@ namespace NasdaqBalticGUI
                 {
                     ErrorLabel.Text = "Neteisingi Prisijungimo duomenys";
                     ErrorLabel.Visible = true;
-                    Slaptazodis.Text = String.Empty;
+                    
                 }
+                Slaptazodis.Text = String.Empty;
             }
         }
 
@@ -51,14 +52,13 @@ namespace NasdaqBalticGUI
                 {
                     ErrorLabel.Visible = true;
                     PrisijungimoVardas.Text = String.Empty;
-                    Slaptazodis.Text = String.Empty;
                 }
                 else
                 {
                     ErrorLabel.Text = "Prisijungimo Vardas uzimtas";
                     ErrorLabel.Visible = true;
-                    Slaptazodis.Text = String.Empty;
                 }
+                Slaptazodis.Text = String.Empty;
             }
         }
 

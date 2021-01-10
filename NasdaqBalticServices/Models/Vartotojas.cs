@@ -9,7 +9,7 @@ namespace Models
         public int Id { get; set; }
         public string Vardas { get; set; }
         public string Slaptazodis { get; set; }
-        public string Balansas { get; set; }
+        public Double Balansas { get; set; }
         public DateTime Created_on { get; set; }
         public Vartotojas()
         {
@@ -26,6 +26,11 @@ namespace Models
 
             return KintamujuMapping;
         }
+        public Vartotojas(int Id)
+        {
+            KintamujuMapping = GetMapping();
+            this.Id = Id;
+        }
 
         public List<Tuple<string, string>> PaverstVartotojaITupleList(List<string> ignoreColumns = null)
         {
@@ -36,6 +41,17 @@ namespace Models
         {
             Vartotojas vartotojas = ListToObject<Vartotojas>(vienasElementas);
             return vartotojas;
+        }
+        public override bool Equals(object o)
+        {
+            if (!(o is Vartotojas)) { return false; }
+            return ((Vartotojas)o).Id == this.Id && ((Vartotojas)o).Vardas.Equals(this.Vardas) && ((Vartotojas)o).Slaptazodis.Equals(this.Slaptazodis)  && ((Vartotojas)o).Balansas == this.Balansas &&
+                ((Vartotojas)o).Created_on == this.Created_on;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id;
         }
     }
 }

@@ -69,6 +69,7 @@ namespace NasdaqBalticGUI
             this.PrisijungimoVardas.Name = "PrisijungimoVardas";
             this.PrisijungimoVardas.Size = new System.Drawing.Size(248, 24);
             this.PrisijungimoVardas.TabIndex = 2;
+            this.PrisijungimoVardas.Text = "laurynas";
             this.PrisijungimoVardas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrisijungimoVardas_KeyPress);
             // 
             // Slaptazodis
@@ -79,6 +80,7 @@ namespace NasdaqBalticGUI
             this.Slaptazodis.PasswordChar = '*';
             this.Slaptazodis.Size = new System.Drawing.Size(248, 24);
             this.Slaptazodis.TabIndex = 3;
+            this.Slaptazodis.Text = "1";
             this.Slaptazodis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Slaptazodis_KeyPress);
             // 
             // pictureBox1

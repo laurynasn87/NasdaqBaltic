@@ -201,6 +201,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AkcijosController.cs" />
     <Compile Include="Controllers\VartotojaiController.cs" />
+    <Compile Include="Controllers\VartotojoAkcijosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,7 +260,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Akcijos\" />
+    <Folder Include="Views\Default\" />
     <Folder Include="Views\Vartotojai\" />
+    <Folder Include="Views\VartotojoAkcijos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

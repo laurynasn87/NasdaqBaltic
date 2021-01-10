@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NasdaqBalticGUI
 {
-    class LoginAndRegistracija
+   public class LoginAndRegistracija
     {
         string Url = "https://localhost:44319/api/Vartotojai";
         string Vardas;
@@ -27,8 +27,7 @@ namespace NasdaqBalticGUI
                 { "Vardas", Vardas },
                 { "Slaptazodis", Slaptazodis }
             };
-           // rezultatas = Task.Run(async () => await api.ApiCallAsync(reiksmes, Url + "/Autentifikuoti")).Result;
-           dabartinisNaudotojas = api.ApiCallResponseObject<Vartotojas>(reiksmes, Url + "/Autentifikuoti");
+           dabartinisNaudotojas = api.PostApiCallResponseObject<Vartotojas>(reiksmes, Url + "/Autentifikuoti");
             return dabartinisNaudotojas != null;
         }
         public bool BandytiRegistruoti()
@@ -39,7 +38,13 @@ namespace NasdaqBalticGUI
                 { "Vardas", Vardas },
                 { "Slaptazodis", Slaptazodis }
             };
-            rezultatas = Task.Run(async () => await api.ApiCallAsync(reiksmes, Url + "/Create")).Result;
+            try
+            {
+                rezultatas = Task.Run(async () => await api.PostApiCallAsync(reiksmes, Url + "/Create")).Result;
+            }
+            catch(Exception e)
+            { }
+            
 
             return rezultatas;
         }

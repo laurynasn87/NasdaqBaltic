@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasdaqBalticGUI", "NasdaqBalticGUI\NasdaqBalticGUI.csproj", "{143408B6-A716-449E-B941-807A1BF3CD71}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NasdaqBalticGUI_Tests", "NasdaqBalticGUI_Tests\NasdaqBalticGUI_Tests.csproj", "{8EDA13F5-EC6D-4773-924E-97BCEA65F692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{143408B6-A716-449E-B941-807A1BF3CD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{143408B6-A716-449E-B941-807A1BF3CD71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{143408B6-A716-449E-B941-807A1BF3CD71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDA13F5-EC6D-4773-924E-97BCEA65F692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDA13F5-EC6D-4773-924E-97BCEA65F692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDA13F5-EC6D-4773-924E-97BCEA65F692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDA13F5-EC6D-4773-924E-97BCEA65F692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -15,10 +15,10 @@ namespace Database
         MySqlConnection databaseConnection;
         TraceLogger logger = new TraceLogger();
         public static IDictionary<string, string> ConnStrings = new Dictionary<string, string>();
-        public SQLCommands()
+        public SQLCommands(String ConnName)
         {
             ConnStrings = ReadConfig(XDocument.Load(AppDomain.CurrentDomain.BaseDirectory + "app.xml"));
-            this.databaseConnection = new MySqlConnection(ConnStrings["Database"]);
+            this.databaseConnection = new MySqlConnection(ConnStrings[ConnName]);
             databaseConnection.Open();
         }
         public List<List<Tuple<string, string>>> GetAll(string TableName)
@@ -36,6 +36,7 @@ namespace Database
                         List<Tuple<string, string>> VienasIrasas = new List<Tuple<string, string>>();
                         for (int i=0; i< reader.FieldCount; i++)
                         {
+                            if (!reader.IsDBNull(i))
                             VienasIrasas.Add(new Tuple<string, string>(reader.GetName(i), reader.GetString(i)));
                         }
                         results.Add(VienasIrasas);
@@ -60,16 +61,17 @@ namespace Database
                 string stulpeliai = String.Empty;
 
                 if (SulpeliaiIrReiksmes.Count > 0)
-                    stulpeliai = stulpeliai + "Where ";
-                foreach (Tuple<string, string> tuple in SulpeliaiIrReiksmes)
                 {
-                    stulpeliai = stulpeliai + tuple.Item1 + " = " + "'" + tuple.Item2 + "' AND ";
+                    stulpeliai = stulpeliai + "Where ";
+                    foreach (Tuple<string, string> tuple in SulpeliaiIrReiksmes)
+                    {
+                        stulpeliai = stulpeliai + tuple.Item1 + " = " + "'" + tuple.Item2 + "' AND ";
+                    }
+                    stulpeliai = stulpeliai.Remove(stulpeliai.Length - 4);
                 }
-                stulpeliai = stulpeliai.Remove(stulpeliai.Length - 4);
-
                 if (!String.IsNullOrEmpty(Order))
                 {
-                    stulpeliai = stulpeliai + " ORDER BY '" + Order + "'";
+                    stulpeliai = stulpeliai + $" ORDER BY `{TableName}`.`" + Order + "`";
                     if (DESC) stulpeliai = stulpeliai + " DESC ";
                 }
 
@@ -89,7 +91,8 @@ namespace Database
                         List<Tuple<string, string>> VienasIrasas = new List<Tuple<string, string>>();
                         for (int i = 0; i < reader.FieldCount; i++)
                         {
-                            VienasIrasas.Add(new Tuple<string, string>(reader.GetName(i), reader.GetString(i)));
+                            if (!reader.IsDBNull(i))
+                                VienasIrasas.Add(new Tuple<string, string>(reader.GetName(i), reader.GetString(i)));
                         }
                         results.Add(VienasIrasas);
                     }
@@ -134,14 +137,14 @@ namespace Database
             return true;
         }
 
-        public bool Delete(string LentelesPav, string StulpelioPavadinimas, string akcijosKodas)
+        public bool Delete(string LentelesPav, string StulpelioPavadinimas, string identifikatorius)
         {
-            if (String.IsNullOrEmpty(LentelesPav) || String.IsNullOrEmpty(akcijosKodas))
+            if (String.IsNullOrEmpty(LentelesPav) || String.IsNullOrEmpty(identifikatorius))
                 return false;
             try
             {
                 MySqlCommand comm = databaseConnection.CreateCommand();
-                comm.CommandText = $"DELETE  from {LentelesPav} where {StulpelioPavadinimas} = '{akcijosKodas}'";
+                comm.CommandText = $"DELETE  from {LentelesPav} where {StulpelioPavadinimas} = '{identifikatorius}'";
                 comm.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -162,6 +165,8 @@ namespace Database
                 MySqlCommand comm = databaseConnection.CreateCommand();
                 string CommandText = $"UPDATE {LentelsPav} SET ";
                 string stulpeliai = "";
+
+                NustatomiSulpeliaiIrReiksmes.RemoveAll(x => x.Item1.Equals(IdentifikavimoStulpelioPavadinimas));
                 foreach (Tuple<string, string> tuple in NustatomiSulpeliaiIrReiksmes)
                 {
                     stulpeliai = stulpeliai + tuple.Item1 + "=@" + tuple.Item1 + ",";

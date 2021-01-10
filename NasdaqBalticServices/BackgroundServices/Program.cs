@@ -4,7 +4,7 @@ using System.Threading;
 namespace BackgroundServices
 {
      public class Program
-    {
+     {
         public void Startup()
         {
 
@@ -31,6 +31,10 @@ namespace BackgroundServices
                     }
                     akcijuFoninesFunkcijos.IrasytiNaujaFinansineInformacija();
                 }
+                else
+                {
+                    Thread.Sleep(3600000);
+                }
 
                 Thread.Sleep(60000);
             }
@@ -38,12 +42,12 @@ namespace BackgroundServices
 
         bool ArBirzaDirba()
         {
-            int DarboBirzosPradziaH = 10;
-            int DarboBirzosPabaigaH = 16;
+            int BirzosDarboPradziaH = 10;
+            int BirzosDarboPabaigaH = 16;
             bool arDirba = false;
             DateTime Siandien = DateTime.Now;
             if (Siandien.DayOfWeek != DayOfWeek.Saturday && Siandien.DayOfWeek != DayOfWeek.Sunday)
-                if (Siandien.Hour >= DarboBirzosPradziaH &&  Siandien.Hour <= DarboBirzosPabaigaH)
+                if (Siandien.Hour >= BirzosDarboPradziaH &&  Siandien.Hour <= BirzosDarboPabaigaH)
                 {
                     arDirba = true;
                 }

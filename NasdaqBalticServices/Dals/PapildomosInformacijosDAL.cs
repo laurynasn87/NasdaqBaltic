@@ -7,12 +7,21 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace Dals
+namespace DALs
 {
-    public class PapildomosInformacijosDAL : IDisposable
+    public class PapildomosInformacijosDAL
     {
-        SQLCommands sQLCommands = new Database.SQLCommands();
+        SQLCommands sQLCommands;
+        String DefaultDatabaseConn = "Database";
         const string PapildomosInformacijosTablePavadinimas = "papildomainformacija";
+        public PapildomosInformacijosDAL()
+        {
+            sQLCommands = new Database.SQLCommands(DefaultDatabaseConn);
+        }
+        public PapildomosInformacijosDAL(string DatbaseConnectionName)
+        {
+            sQLCommands = new Database.SQLCommands(DatbaseConnectionName);
+        }
         public List<PapildomaInformacija> GautiVisus()
         {
             List<PapildomaInformacija> papildomaInformacija = new List<PapildomaInformacija>();
@@ -35,9 +44,9 @@ namespace Dals
         }
         public bool Atnaujinti(PapildomaInformacija papildomaInformacija)
         {
-            List<Tuple<string, string>> tuples = papildomaInformacija.PaverstPapildomaInformacijaITupleList();
+            List<Tuple<string, string>> tuples = papildomaInformacija.PaverstPapildomaInformacijaITupleList(new List<string>() { "AkcijosKodas"});
             
-            return sQLCommands.Update(tuples, PapildomosInformacijosTablePavadinimas, "Id", papildomaInformacija.Id.ToString());
+            return sQLCommands.Update(tuples, PapildomosInformacijosTablePavadinimas, "AkcijosKodas", papildomaInformacija.AkcijosKodas);
         }
 
         public bool Istrinti(PapildomaInformacija papildomaInformacija)
@@ -61,14 +70,24 @@ namespace Dals
             }
             return null;
         }
-        public FinansineInformacija GautiPagalId(String AkcijosKodas)
+        public PapildomaInformacija GautiPagalId(String id)
         {
-            throw new NotImplementedException();
+            if (!string.IsNullOrEmpty(id))
+            {
+                PapildomaInformacija rezultatas = new PapildomaInformacija();
+                List<List<Tuple<string, string>>> result = sQLCommands.GetByCondition(PapildomosInformacijosTablePavadinimas, new List<Tuple<string, string>>() { new Tuple<string, string>("Id", id) }, 1);
+                foreach (List<Tuple<string, string>> vienaaPiN in result)
+                {
+                    if (vienaaPiN.Count > 0 && rezultatas.Id == 0)
+                    {
+                        rezultatas = rezultatas.ListToPapildomaInformacija(vienaaPiN);
+                    }
+
+                }
+                return rezultatas;
+            }
+            return null;
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

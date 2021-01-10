@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiKontroleris.cs" />
+    <Compile Include="AtidarytosIrUzdarytosPozicijosLogika.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,10 +76,14 @@
     <Compile Include="PagrindinisLangas.Designer.cs">
       <DependentUpon>PagrindinisLangas.cs</DependentUpon>
     </Compile>
+    <Compile Include="PriekiautiLogika.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PagrindinisLangas.lt.resx">
+      <DependentUpon>PagrindinisLangas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PagrindinisLangas.resx">
       <DependentUpon>PagrindinisLangas.cs</DependentUpon>
@@ -130,6 +135,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\loupe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\favicon-154x154-primary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

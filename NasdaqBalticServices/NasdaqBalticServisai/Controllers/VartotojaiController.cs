@@ -24,7 +24,18 @@ namespace NasdaqBalticServisai.Controllers
             }
             return BadRequest();
         }
-
+        // Get: Vartotojai/id
+        public IHttpActionResult Get(int id)
+        {
+            if (id>0)
+            {
+                VartotojasDAL dal = new VartotojasDAL();
+                Vartotojas gautas = dal.GautiPagalId(id.ToString());
+                gautas.Slaptazodis = String.Empty;
+                return Ok(gautas);
+            }
+            return BadRequest();
+        }
         // POST: Vartotojai/Autentifikuoti
         [System.Web.Http.HttpPost]
         [System.Web.Http.Route("api/Vartotojai/Autentifikuoti")]

@@ -15,6 +15,7 @@ namespace Models
         public double Didziausia_Kaina { get; set; }
         public double Maziausia_Kaina { get; set; }
         public double Vidutine_Kaina { get; set; }
+        public double Atidarymo_Kaina { get; set; }
         public string Vadyba { get; set; }
         public string Kontaktai { get; set; }
         public string Kalba { get; set; }
@@ -28,26 +29,9 @@ namespace Models
             PapildomaInformacija PapInfo = ListToObject<PapildomaInformacija>(pI);
             return PapInfo;
         }
-        public bool ArIdentiski(PapildomaInformacija v1, PapildomaInformacija v2)
+        public List<Tuple<string, string>> PaverstPapildomaInformacijaITupleList(List<string> IgnoravimoSar = null)
         {
-                foreach (PropertyInfo prop in v1.GetType().GetProperties())
-                {
-                if (prop.Name.Equals("Id"))
-                    continue;
-
-                    var v1Value = prop.GetValue(v1);
-                    var v2Value = prop.GetValue(v2);
-                    if (v1Value != v2Value)
-                    {
-                    return false;
-                    }
-
-                }
-            return true;
-        }
-        public List<Tuple<string, string>> PaverstPapildomaInformacijaITupleList()
-        {
-            List<Tuple<string, string>> tuples = PaverstObjektaITupleList(this);
+            List<Tuple<string, string>> tuples = PaverstObjektaITupleList(this, IgnoravimoSar);
             return tuples;
         }
         private List<Tuple<string, string>> GetMapping()
@@ -61,11 +45,24 @@ namespace Models
             new Tuple<string, string>("DidKaina","Didziausia_Kaina"),
             new Tuple<string, string>("MinKaina","Maziausia_Kaina"),
             new Tuple<string, string>("VidKaina","Vidutine_Kaina"),
+            new Tuple<string, string>("AtidarymoKaina","Atidarymo_Kaina"),
             new Tuple<string, string>("Vadyba","Vadyba"),
             new Tuple<string, string>("Kontaktai","Kontaktai"),
             new Tuple<string, string>("Kalba","Kalba")
             };
             return KintamujuMapping;
+        }
+        public override bool Equals(object o)
+        {
+            if (!(o is PapildomaInformacija)) { return false; }
+            return ((PapildomaInformacija)o).Id == this.Id && ((PapildomaInformacija)o).AkcijosKodas.Equals(this.AkcijosKodas) && ((PapildomaInformacija)o).Apie.Equals(this.Apie) && ((PapildomaInformacija)o).Vadyba.Equals(this.Vadyba) && ((PapildomaInformacija)o).Kontaktai.Equals(this.Kontaktai) &&
+                ((PapildomaInformacija)o).AtaskaitosURL.Equals(this.AtaskaitosURL) && ((PapildomaInformacija)o).Kalba.Equals(this.Kalba) && ((PapildomaInformacija)o).Didziausia_Kaina == this.Didziausia_Kaina && ((PapildomaInformacija)o).Maziausia_Kaina == this.Maziausia_Kaina && ((PapildomaInformacija)o).Vidutine_Kaina == this.Vidutine_Kaina &&
+                ((PapildomaInformacija)o).Atidarymo_Kaina == this.Atidarymo_Kaina;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id;
         }
     }
 }
