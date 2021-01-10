@@ -55,9 +55,32 @@ namespace Models
         public override bool Equals(object o)
         {
             if (!(o is PapildomaInformacija)) { return false; }
-            return ((PapildomaInformacija)o).Id == this.Id && ((PapildomaInformacija)o).AkcijosKodas.Equals(this.AkcijosKodas) && ((PapildomaInformacija)o).Apie.Equals(this.Apie) && ((PapildomaInformacija)o).Vadyba.Equals(this.Vadyba) && ((PapildomaInformacija)o).Kontaktai.Equals(this.Kontaktai) &&
-                ((PapildomaInformacija)o).AtaskaitosURL.Equals(this.AtaskaitosURL) && ((PapildomaInformacija)o).Kalba.Equals(this.Kalba) && ((PapildomaInformacija)o).Didziausia_Kaina == this.Didziausia_Kaina && ((PapildomaInformacija)o).Maziausia_Kaina == this.Maziausia_Kaina && ((PapildomaInformacija)o).Vidutine_Kaina == this.Vidutine_Kaina &&
-                ((PapildomaInformacija)o).Atidarymo_Kaina == this.Atidarymo_Kaina;
+
+            PapildomaInformacija papildomaInformacija = (PapildomaInformacija)o;
+            if (papildomaInformacija.Id != this.Id)
+                return false;
+            if (!object.Equals(papildomaInformacija.AkcijosKodas, this.AkcijosKodas))
+                return false;
+            if (!object.Equals(papildomaInformacija.Apie, this.Apie))
+                return false;
+            if (!object.Equals(papildomaInformacija.AtaskaitosURL, this.AtaskaitosURL))
+                return false;
+            if (!object.Equals(papildomaInformacija.Vadyba, this.Vadyba))
+                return false;
+            if (!object.Equals(papildomaInformacija.Kontaktai, this.Kontaktai))
+                return false;
+            if (!object.Equals(papildomaInformacija.Kalba, this.Kalba))
+                return false;
+            if (papildomaInformacija.Didziausia_Kaina != this.Didziausia_Kaina)
+                return false;
+            if (papildomaInformacija.Maziausia_Kaina != this.Maziausia_Kaina)
+                return false;
+            if (papildomaInformacija.Vidutine_Kaina != this.Vidutine_Kaina)
+                return false;
+            if (papildomaInformacija.Atidarymo_Kaina != this.Atidarymo_Kaina)
+                return false;
+
+            return true;
         }
 
         public override int GetHashCode()

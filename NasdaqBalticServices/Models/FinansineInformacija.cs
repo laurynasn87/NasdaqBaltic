@@ -55,9 +55,30 @@ namespace Models
         public override bool Equals(object o)
         {
             if (!(o is FinansineInformacija)) { return false; }
-            return ((FinansineInformacija)o).Id == this.Id && ((FinansineInformacija)o).AkcijosKodas.Equals(this.AkcijosKodas) && ((FinansineInformacija)o).Paskutine_Kaina == this.Paskutine_Kaina && ((FinansineInformacija)o).Pokytis == this.Pokytis &&
-                ((FinansineInformacija)o).PokytisProcentais == this.PokytisProcentais && ((FinansineInformacija)o).PirkimoKaina == this.PirkimoKaina && ((FinansineInformacija)o).PardavimoKaina == this.PardavimoKaina &&
-                ((FinansineInformacija)o).Sandoriai == this.Sandoriai && ((FinansineInformacija)o).Apyvarta == this.Apyvarta && ((FinansineInformacija)o).Timestamp == this.Timestamp;
+
+            FinansineInformacija finansineInformacija = (FinansineInformacija)o;
+            if (finansineInformacija.Id != this.Id)
+                return false;
+            if (!object.Equals(finansineInformacija.AkcijosKodas, this.AkcijosKodas))
+                return false;
+            if (finansineInformacija.Paskutine_Kaina != this.Paskutine_Kaina)
+                return false;
+            if (finansineInformacija.Pokytis != this.Pokytis)
+                return false;
+            if (finansineInformacija.PokytisProcentais != this.PokytisProcentais)
+                return false;
+            if (finansineInformacija.PirkimoKaina != this.PirkimoKaina)
+                return false;
+            if (finansineInformacija.PardavimoKaina != this.PardavimoKaina)
+                return false;
+            if (finansineInformacija.Sandoriai != this.Sandoriai)
+                return false;
+            if (finansineInformacija.Apyvarta != this.Apyvarta)
+                return false;
+            if (!finansineInformacija.Timestamp.Equals(this.Timestamp))
+                return false;
+
+            return true;
         }
 
 

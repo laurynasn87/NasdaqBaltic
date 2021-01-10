@@ -148,11 +148,11 @@ namespace NasdaqBalticGUI
             CustomLaukai.Add("Verte", (akcija.UzdarymoKaina * akcija.Kiekis).ToString());
             if (akcija.Pirkimas)
             {
-                CustomLaukai.Add("P&N", (akcija.UzdarymoKaina * akcija.Kiekis - akcija.PirkimoKaina * akcija.Kiekis).ToString() + " €");
+                CustomLaukai.Add("P&N", (akcija.UzdarymoKaina * akcija.Kiekis - akcija.PirkimoKaina * akcija.Kiekis).ToString("0.##") + " €");
             }
             else
             {
-                CustomLaukai.Add("P&N", (akcija.PirkimoKaina * akcija.Kiekis - akcija.UzdarymoKaina * akcija.Kiekis).ToString() + " €");
+                CustomLaukai.Add("P&N", (akcija.PirkimoKaina * akcija.Kiekis - akcija.UzdarymoKaina * akcija.Kiekis).ToString("0.##") + " €");
             }
 
             return CustomLaukai;

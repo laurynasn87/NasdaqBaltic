@@ -45,10 +45,23 @@ namespace Models
         public override bool Equals(object o)
         {
             if (!(o is Vartotojas)) { return false; }
-            return ((Vartotojas)o).Id == this.Id && ((Vartotojas)o).Vardas.Equals(this.Vardas) && ((Vartotojas)o).Slaptazodis.Equals(this.Slaptazodis)  && ((Vartotojas)o).Balansas == this.Balansas &&
-                ((Vartotojas)o).Created_on == this.Created_on;
-        }
 
+            Vartotojas vartotojas = (Vartotojas)o;
+
+            if (vartotojas.Id != this.Id)
+                return false;
+            if (!object.Equals(vartotojas.Vardas, this.Vardas))
+                return false;
+            if (!object.Equals(vartotojas.Slaptazodis, this.Slaptazodis))
+                return false;
+            if (vartotojas.Balansas != this.Balansas)
+                return false;
+            if (!vartotojas.Created_on.Equals(this.Created_on))
+                return false;
+
+            return true;
+        }
+      
         public override int GetHashCode()
         {
             return this.Id;

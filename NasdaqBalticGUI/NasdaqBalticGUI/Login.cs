@@ -51,11 +51,12 @@ namespace NasdaqBalticGUI
                 if (registracija.BandytiRegistruoti())
                 {
                     ErrorLabel.Visible = true;
+                    ErrorLabel.Text = "Sėkmingai priregistruota";
                     PrisijungimoVardas.Text = String.Empty;
                 }
                 else
                 {
-                    ErrorLabel.Text = "Prisijungimo Vardas uzimtas";
+                    ErrorLabel.Text = "Prisijungimo Vardas užimtas";
                     ErrorLabel.Visible = true;
                 }
                 Slaptazodis.Text = String.Empty;

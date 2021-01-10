@@ -12,12 +12,14 @@ namespace NasdaqBalticServisai.Controllers
 {
     public class VartotojaiController : ApiController
     {
+        int DefaultBalansas = 3000;
 
         // POST: Vartotojai/Create
         public IHttpActionResult Create([FromBody] Vartotojas vartotojas )
         {
             if (!string.IsNullOrEmpty(vartotojas.Vardas) && !string.IsNullOrEmpty(vartotojas.Slaptazodis))
             {
+                vartotojas.Balansas = DefaultBalansas;
                 LoginIrRegistracijosDAL dal = new LoginIrRegistracijosDAL();
                 if (dal.Ivesti(vartotojas))
                     return Ok();

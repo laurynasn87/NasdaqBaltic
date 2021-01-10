@@ -36,7 +36,7 @@ namespace NasdaqBalticGUI
             DabartinisVarotojas = vartotojas;
             DabartinesPirkimoAkcijos = PriekiautiLangas.GautiVisasAkcijas();
             UzsakymuLogika.GautiAtidarytasIrUzdarytasPozicijas(DabartinisVarotojas.Id, DabartinesPirkimoAkcijos, out VartotojoAtidarytosPozicijos,out CustomLaukaiPozicijom, out VartotojoUzdarytosPozicijos, out CustomLaukaiUzdarytomPozicijom);
-            NustatytiAntrastes(DabartinisVarotojas.Balansas, VartotojoAtidarytosPozicijos);
+            AtnaujintiAntrastes(VartotojoAtidarytosPozicijos);
             Thread thread = new Thread(() => AtnaujintiReiksmesTimer());
             thread.IsBackground = true;
             thread.Start();
@@ -137,24 +137,24 @@ namespace NasdaqBalticGUI
 
                     }
                 }
-            NustatytiAntrastes(DabartinisVarotojas.Balansas, VartotojoAtidarytosPozicijos);
+            AtnaujintiAntrastes(VartotojoAtidarytosPozicijos);
             SpalvuNustatymasPokyciams(Mappingai);
             AtnaujintiData();
 
 
         }
 
-        void NustatytiAntrastes(Double VartotojoBalansas, List<VartotojoAkcija> AkcijosVartotojo)
+        void AtnaujintiAntrastes(List<VartotojoAkcija> AkcijosVartotojo)
         {
             DabartinisVarotojas = PriekiautiLangas.GautiVartotoja(DabartinisVarotojas.Id);
-            Balansas.Text = VartotojoBalansas + " €";
+            Balansas.Text = DabartinisVarotojas.Balansas + " €";
             double portfolioVerte;
             double PandN = UzsakymuLogika.GautiPelnaNuostoli(AkcijosVartotojo, out portfolioVerte);
             if (PandN > 0) PN.ForeColor = Color.Green;
             if (PandN < 0) PN.ForeColor = Color.Red;
 
             PN.Text = PandN.ToString("0.##") + " €";
-            Kapitalas.Text = VartotojoBalansas + PandN + " €";
+            Kapitalas.Text = DabartinisVarotojas.Balansas + PandN + " €";
             VerteValue.Text = portfolioVerte.ToString("0.##") + " €";
         } 
         void AtnaujintiData()
@@ -428,7 +428,7 @@ namespace NasdaqBalticGUI
             else if (PirktiKiekis.Value > 0)
             {
                 SutikimasIrUzsakymoDarymas((int)PirktiKiekis.Value, PasirinktaAkcija.finansineInformacija.PirkimoKaina, PasirinktaAkcija, true, DabartinisVarotojas);
-               
+                PirktiKiekis.Value = 0;
             }
             
         }
@@ -618,6 +618,7 @@ namespace NasdaqBalticGUI
                 input = input.Replace("ndash;", "–");
                 input = input.Replace("rdquo;", "”");
                 input = input.Replace("nbsp;", " ");
+                input = input.Replace("otilde;", "õ");
             }
             return input;
         }
@@ -668,13 +669,15 @@ namespace NasdaqBalticGUI
             else if (ParduotiKiekis.Value > 0)
             {
                 SutikimasIrUzsakymoDarymas((int)ParduotiKiekis.Value, PasirinktaAkcija.finansineInformacija.PardavimoKaina, PasirinktaAkcija, false, DabartinisVarotojas);
+                ParduotiKiekis.Value = 0;
+
             }
         }
 
        void SutikimasIrUzsakymoDarymas(int kiekis, double Kaina, Akcijos akcija, bool Pirkimas, Vartotojas Pirkejas)
        {
             double PilnaKaina = kiekis * Kaina;
-            if (Kaina <= Pirkejas.Balansas)
+            if (PilnaKaina <= Pirkejas.Balansas)
             {
                 String Tekstas = String.Empty;
                 if (Pirkimas)
@@ -690,7 +693,7 @@ namespace NasdaqBalticGUI
                         ParduotiKiekis.Visible = false;
                         MessageBox.Show("Sekmingai nupirkta");
                         UzsakymuLogika.GautiAtidarytasIrUzdarytasPozicijas(DabartinisVarotojas.Id, DabartinesPirkimoAkcijos, out VartotojoAtidarytosPozicijos, out CustomLaukaiPozicijom, out VartotojoUzdarytosPozicijos, out CustomLaukaiUzdarytomPozicijom);
-                        
+                        AtnaujintiAntrastes(VartotojoAtidarytosPozicijos);
                     }
                     else
                         MessageBox.Show("Nepavyko nupirkti");
@@ -723,6 +726,7 @@ namespace NasdaqBalticGUI
                     Prekiauti.Width = ListviewPlotisPilnas;
                     UzsakymuLogika.GautiAtidarytasIrUzdarytasPozicijas(DabartinisVarotojas.Id, DabartinesPirkimoAkcijos, out VartotojoAtidarytosPozicijos, out CustomLaukaiPozicijom, out VartotojoUzdarytosPozicijos, out CustomLaukaiUzdarytomPozicijom);
                     InicijuotiAtvaizdzioPakeitima(UzsakymuLogika.AtidarytuAkcijuUzsakymuLentelesStulpeliaiMapping, VartotojoAtidarytosPozicijos, CustomLaukaiPozicijom);
+                    AtnaujintiAntrastes(VartotojoAtidarytosPozicijos);
                     PauseAtnaujinima = false;
                 }
                 else

@@ -60,9 +60,68 @@ namespace Models
         public override bool Equals(object o)
         {
             if (!(o is VartotojoAkcija)) { return false; }
-            return ((VartotojoAkcija)o).Id == this.Id && ((VartotojoAkcija)o).PirkimoKaina == this.PirkimoKaina && ((VartotojoAkcija)o).UzdarymoKaina == this.UzdarymoKaina && ((VartotojoAkcija)o).Kiekis == this.Kiekis &&
-                ((VartotojoAkcija)o).akcija.Equals(this.akcija) && ((VartotojoAkcija)o).vartotojas.Equals(this.vartotojas) && ((VartotojoAkcija)o).UzdarymoData.Equals(this.AtidarymoData) && ((VartotojoAkcija)o).Priezastis.Equals(this.Priezastis) &&
-                 ((VartotojoAkcija)o).Pirkimas == this.Pirkimas;
+
+            VartotojoAkcija vartotojoAkcija = (VartotojoAkcija)o;
+
+            if (vartotojoAkcija.Id != this.Id)
+                return false;
+
+            if (vartotojoAkcija.akcija != null || this.akcija != null)
+            {
+                if ((vartotojoAkcija.akcija == null && this.akcija != null) || (vartotojoAkcija.akcija != null && this.akcija == null))
+                    return false;
+                else
+                {
+                    if (!vartotojoAkcija.akcija.Equals(akcija))
+                        return false;
+                }
+            }
+            if (vartotojoAkcija.vartotojas != null || this.vartotojas != null)
+            {
+                if ((vartotojoAkcija.vartotojas == null && this.vartotojas != null) || (vartotojoAkcija.vartotojas != null && this.vartotojas == null))
+                    return false;
+                else
+                {
+                    if (!vartotojoAkcija.vartotojas.Equals(vartotojas))
+                        return false;
+                }
+            }
+            if (vartotojoAkcija.UzdarymoData != null || this.UzdarymoData != null)
+            {
+                if ((vartotojoAkcija.UzdarymoData == null && this.UzdarymoData != null) || (vartotojoAkcija.UzdarymoData != null && this.UzdarymoData == null))
+                    return false;
+                else
+                {
+                    if (!vartotojoAkcija.UzdarymoData.Equals(UzdarymoData))
+                        return false;
+                }
+            }
+            if (vartotojoAkcija.AtidarymoData != null || this.AtidarymoData != null)
+            {
+                if ((vartotojoAkcija.AtidarymoData == null && this.AtidarymoData != null) || (vartotojoAkcija.AtidarymoData != null && this.AtidarymoData == null))
+                    return false;
+                else
+                {
+                    if (!vartotojoAkcija.AtidarymoData.Equals(AtidarymoData))
+                        return false;
+                }
+            }
+            if (vartotojoAkcija.Pirkimas != this.Pirkimas)
+                return false;
+
+            if (vartotojoAkcija.PirkimoKaina != this.PirkimoKaina)
+                return false;
+
+            if (vartotojoAkcija.UzdarymoKaina != this.UzdarymoKaina)
+                return false;
+
+            if (vartotojoAkcija.Kiekis != this.Kiekis)
+                return false;
+
+            if (!object.Equals(vartotojoAkcija.Priezastis, this.Priezastis))
+                return false;
+            return true;
+
         }
 
         public override int GetHashCode()

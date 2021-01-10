@@ -48,8 +48,8 @@ namespace NasdaqBalticGUI
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.Verte = new System.Windows.Forms.Label();
             this.PaieskosLaukas = new System.Windows.Forms.TextBox();
+            this.Verte = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.VerteValue = new System.Windows.Forms.Label();
             this.PN = new System.Windows.Forms.Label();
@@ -58,6 +58,7 @@ namespace NasdaqBalticGUI
             this.label2 = new System.Windows.Forms.Label();
             this.Balansas = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.AkcijosInformacija = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ParduotiKiekis = new System.Windows.Forms.NumericUpDown();
@@ -135,7 +136,6 @@ namespace NasdaqBalticGUI
             this.PandN = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -329,12 +329,6 @@ namespace NasdaqBalticGUI
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
             // 
-            // Verte
-            // 
-            resources.ApplyResources(this.Verte, "Verte");
-            this.Verte.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Verte.Name = "Verte";
-            // 
             // PaieskosLaukas
             // 
             this.PaieskosLaukas.BackColor = System.Drawing.SystemColors.Control;
@@ -344,6 +338,12 @@ namespace NasdaqBalticGUI
             this.PaieskosLaukas.TextChanged += new System.EventHandler(this.Paieska);
             this.PaieskosLaukas.Enter += new System.EventHandler(this.PaieskosLaukas_Enter);
             this.PaieskosLaukas.Leave += new System.EventHandler(this.PaieskosLaukas_Leave);
+            // 
+            // Verte
+            // 
+            resources.ApplyResources(this.Verte, "Verte");
+            this.Verte.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Verte.Name = "Verte";
             // 
             // label5
             // 
@@ -389,6 +389,11 @@ namespace NasdaqBalticGUI
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
             // 
             // AkcijosInformacija
             // 
@@ -965,11 +970,6 @@ namespace NasdaqBalticGUI
             this.label12.Name = "label12";
             this.label12.UseMnemonic = false;
             // 
-            // label23
-            // 
-            resources.ApplyResources(this.label23, "label23");
-            this.label23.Name = "label23";
-            // 
             // PagrindinisLangas
             // 
             resources.ApplyResources(this, "$this");
@@ -979,6 +979,7 @@ namespace NasdaqBalticGUI
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.AkcijosInformacija);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PagrindinisLangas";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PagrindinisLangas_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
