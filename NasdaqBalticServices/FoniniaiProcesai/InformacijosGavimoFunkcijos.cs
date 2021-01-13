@@ -9,6 +9,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace FoniniaiProcesai
 {
@@ -184,7 +185,7 @@ namespace FoniniaiProcesai
                             {
                                 if (!String.IsNullOrEmpty(papildomaInformacija.Vadyba) && !String.IsNullOrEmpty(papildomaInformacija.Apie) && !String.IsNullOrEmpty(papildomaInformacija.Kontaktai))
                                     break;
-                                String VisasTekstas = tekstoNode.InnerText;
+                                String VisasTekstas = PasalintiNereikalingusSimbolius(HttpUtility.HtmlDecode(tekstoNode.InnerText));
                                 int ApieIndex = VisasTekstas.IndexOf(ApieSekcijosPavadinimas[i], StringComparison.OrdinalIgnoreCase);
                                 int KontaktaiIndex = VisasTekstas.IndexOf(KontaktaiSekcijosPavadinimas[i], StringComparison.OrdinalIgnoreCase);
                                 int VadybaIndex = VisasTekstas.IndexOf(VadybaSekcijosPavadinimas[i], StringComparison.OrdinalIgnoreCase);
@@ -455,7 +456,9 @@ namespace FoniniaiProcesai
         }
         private string PasalintiNereikalingusSimbolius(String st)
         {
-            return st.Trim().Replace("\n", "").Replace("\r", "").Replace("!", "").Replace("&amp", "&");
+            if (!string.IsNullOrEmpty(st))
+            return st.Replace("\n", "").Replace("\r", "").Replace("!", "").Replace("&amp", "&").Replace("&nbsp;", " ").Trim();
+            return st;
         }
         private Akcijos ListToAkcija(List<Tuple<string, string>> tuples)
         {

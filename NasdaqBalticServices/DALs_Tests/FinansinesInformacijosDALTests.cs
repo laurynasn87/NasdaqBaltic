@@ -11,13 +11,14 @@ namespace DALs_Tests
     {
         FinansinesInformacijosDAL FIDal = new FinansinesInformacijosDAL();
         [Test]
-        public void GautiVisus_0_rezultatas_AkcijuListDaugiauUz0()
+        public void GautiVisus__rezultatas_GautiVisiFinansinesInformacijosIrasai()
         {
-           List <FinansineInformacija> VisosFiN = FIDal.GautiVisus();
+            List<FinansineInformacija> VisosFiN = FIDal.GautiVisus();
+
             Assert.IsTrue(VisosFiN != null && VisosFiN.Count > 0);
         }
         [Test]
-        public void GautiPagalId_1VisosFinansinesInformacijosElementas_rezultatas_FinansineInformacijaSurasta()
+        public void GautiPagalId_PirmasVisuFinansiniuInformacijuElementas_rezultatas_FinansineInformacijaSurasta()
         {
             List<FinansineInformacija> VisosFiN = FIDal.GautiVisus();
             FinansineInformacija akcijosFiN = VisosFiN[0];
@@ -27,7 +28,7 @@ namespace DALs_Tests
             Assert.AreEqual(akcijosFiN, GautaAkcijaPagalId);
         }
         [Test]
-        public void GautiPagalKodaNaujausia_NaujausiasFinansinesInformacijosElementas_rezultatas_FinansineInformacijaSurasta()
+        public void GautiPagalKodaNaujausia_NaujausiasVisuFinansiniuInformacijuElementas_rezultatas_FinansineInformacijaSurasta()
         {
             List<FinansineInformacija> VisosFiN = FIDal.GautiVisus();
             VisosFiN = VisosFiN.OrderByDescending(o => o.Id).ToList();
@@ -35,12 +36,12 @@ namespace DALs_Tests
 
             FinansineInformacija GautaAkcijaPagalId = FIDal.GautiPagalKodaNaujausia(akcijosFiN.AkcijosKodas);
 
-            Assert.AreEqual(akcijosFiN,GautaAkcijaPagalId);
+            Assert.AreEqual(akcijosFiN, GautaAkcijaPagalId);
         }
 
-         [Test]
-         public void Ivesti_FinansineInformacija_rezultatas_FinansineInformacijaVisuFiNSarase()
-         {
+        [Test]
+        public void Ivesti_NaujausiaFinansineInformacija_rezultatas_FinansineInformacijaVisuFiNSarase()
+        {
             List<FinansineInformacija> VisosFiN = FIDal.GautiVisus();
             VisosFiN = VisosFiN.OrderByDescending(o => o.Id).ToList();
             FinansineInformacija akcijosFiN = VisosFiN[0];
@@ -51,15 +52,15 @@ namespace DALs_Tests
             FinansinesInformacijosDAL TestFiNDal = new FinansinesInformacijosDAL("Test");
             TestFiNDal.Ivesti(akcijosFiN);
 
-             List<FinansineInformacija> VisosTestFiN = TestFiNDal.GautiVisus();
+            List<FinansineInformacija> VisosTestFiN = TestFiNDal.GautiVisus();
 
-             Assert.IsTrue(VisosTestFiN.Find(x=> x.AkcijosKodas.Equals(akcijosFiN.AkcijosKodas) && x.Kiekis.Equals(akcijosFiN.Kiekis) && x.PardavimoKaina.Equals(akcijosFiN.PardavimoKaina) && x.PirkimoKaina.Equals(akcijosFiN.PirkimoKaina) && x.Paskutine_Kaina.Equals(akcijosFiN.Paskutine_Kaina)) != null);
+            Assert.IsTrue(VisosTestFiN.Find(x => x.AkcijosKodas.Equals(akcijosFiN.AkcijosKodas) && x.Kiekis.Equals(akcijosFiN.Kiekis) && x.PardavimoKaina.Equals(akcijosFiN.PardavimoKaina) && x.PirkimoKaina.Equals(akcijosFiN.PirkimoKaina) && x.Paskutine_Kaina.Equals(akcijosFiN.Paskutine_Kaina)) != null);
         }
-        
-        
-         [Test]
-         public void Atnaujinti_FinansineInformacija_rezultatas_AtnaujintiFinansineInformacijaVisuFinansiniuInformacijuSarase()
-         {
+
+
+        [Test]
+        public void Atnaujinti_NaujausiaFinansineInformacija_rezultatas_AtnaujintiFinansineInformacijaVisuFinansiniuInformacijuSarase()
+        {
             FinansinesInformacijosDAL TestFiNDal = new FinansinesInformacijosDAL("Test");
             List<FinansineInformacija> VisosFiN = TestFiNDal.GautiVisus();
             VisosFiN = VisosFiN.OrderByDescending(o => o.Id).ToList();
@@ -68,7 +69,7 @@ namespace DALs_Tests
             akcijosFiN.PirkimoKaina = 666;
             akcijosFiN.Paskutine_Kaina = 666;
 
-            
+
             TestFiNDal.Ivesti(akcijosFiN);
             akcijosFiN.PardavimoKaina = 333;
             akcijosFiN.PirkimoKaina = 333;
@@ -78,11 +79,11 @@ namespace DALs_Tests
 
 
             List<FinansineInformacija> VisosTestFiN = TestFiNDal.GautiVisus();
-            Assert.IsTrue(VisosTestFiN.Find(x=> x.Id == akcijosFiN.Id && akcijosFiN.PardavimoKaina  == x.PardavimoKaina && akcijosFiN.PirkimoKaina == x.PirkimoKaina && akcijosFiN.Paskutine_Kaina == x.Paskutine_Kaina) != null);
-            }
-         [Test]
-         public void Istrinti_FinansineInformacija_rezultatas_FinansinesInformacijosNeberaVisuFISarase()
-         {
+            Assert.IsTrue(VisosTestFiN.Any(x => x.Id == akcijosFiN.Id && akcijosFiN.PardavimoKaina == x.PardavimoKaina && akcijosFiN.PirkimoKaina == x.PirkimoKaina && akcijosFiN.Paskutine_Kaina == x.Paskutine_Kaina));
+        }
+        [Test]
+        public void Istrinti_FinansineInformacija_rezultatas_FinansinesInformacijosNeberaVisuFISarase()
+        {
             FinansinesInformacijosDAL TestFiNDal = new FinansinesInformacijosDAL("Test");
             List<FinansineInformacija> VisosFiN = FIDal.GautiVisus();
             FinansineInformacija akcijosFiN = VisosFiN[0];
@@ -92,12 +93,24 @@ namespace DALs_Tests
 
             TestFiNDal.Ivesti(akcijosFiN);
             List<FinansineInformacija> VisosTestFiN = TestFiNDal.GautiVisus();
-            FinansineInformacija NaujafinansineInformacija = VisosTestFiN.Find(x=> x.PardavimoKaina == akcijosFiN.PardavimoKaina && x.PirkimoKaina == akcijosFiN.PirkimoKaina && x.Paskutine_Kaina == akcijosFiN.Paskutine_Kaina);
+            FinansineInformacija NaujafinansineInformacija = VisosTestFiN.Find(x => x.PardavimoKaina == akcijosFiN.PardavimoKaina && x.PirkimoKaina == akcijosFiN.PirkimoKaina && x.Paskutine_Kaina == akcijosFiN.Paskutine_Kaina);
             if (NaujafinansineInformacija != null)
                 TestFiNDal.Istrinti(NaujafinansineInformacija);
+
             VisosTestFiN = TestFiNDal.GautiVisus();
 
-            Assert.IsTrue(VisosTestFiN.Find(x => x.Id == NaujafinansineInformacija.Id && NaujafinansineInformacija.PardavimoKaina == x.PardavimoKaina && NaujafinansineInformacija.PirkimoKaina == x.PirkimoKaina && NaujafinansineInformacija.Paskutine_Kaina == x.Paskutine_Kaina) == null && NaujafinansineInformacija != null);
+            Assert.IsTrue(!VisosTestFiN.Any(x => x.Id == NaujafinansineInformacija.Id && NaujafinansineInformacija.PardavimoKaina == x.PardavimoKaina && NaujafinansineInformacija.PirkimoKaina == x.PirkimoKaina && NaujafinansineInformacija.Paskutine_Kaina == x.Paskutine_Kaina) && NaujafinansineInformacija != null);
+
+        }
+        [Test]
+        public void GautiStatistikas_NaujausiaFinansineInformacija_rezultatas_GrazinamosTrysStatistikos()
+        {
+            FinansinesInformacijosDAL TestFiNDal = new FinansinesInformacijosDAL();
+
+            Dictionary<string, Dictionary<DateTime, double>>  Statistika = FIDal.GautiStatistikas(TestFiNDal.GautiVisus()[0].AkcijosKodas);
+
+
+            Assert.IsTrue(Statistika != null && Statistika.Count > 0);
 
         }
     }

@@ -16,11 +16,11 @@ namespace DALs_Tests
             Vartotojas NaujasVartotojas = new Vartotojas();
             NaujasVartotojas.Vardas = "LaurynasTEST" + DateTime.Now.ToString("MM-dd/HH:mm");
             NaujasVartotojas.Slaptazodis = "Test";
-            
+
             Assert.IsTrue(RegistracijosLoginDAL.Ivesti(NaujasVartotojas));
         }
         [Test]
-        public void asd_Vartotojas_rezultatas_True()
+        public void ArTeisingiLogin_Vartotojas_rezultatas_True()
         {
             Vartotojas NaujasVartotojas = new Vartotojas();
             NaujasVartotojas.Vardas = "LaurynasTEST" + DateTime.Now.ToString("MM-dd/HH:mm:ss");
@@ -30,6 +30,7 @@ namespace DALs_Tests
             Vartotojas PrisijungesVartotojas;
 
             bool SekmingasPrisijungimas = RegistracijosLoginDAL.ArTeisingiLogin(NaujasVartotojas, out PrisijungesVartotojas);
+
             Assert.IsTrue(SekmingasPrisijungimas && PrisijungesVartotojas != null && PrisijungesVartotojas.Vardas.Equals(NaujasVartotojas.Vardas));
         }
     }

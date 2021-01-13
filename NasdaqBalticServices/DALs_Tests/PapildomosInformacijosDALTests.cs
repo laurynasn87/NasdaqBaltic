@@ -9,33 +9,35 @@ namespace DALs_Tests
 {
     public class PapildomosInformacijosDALTests
     {
-        
+
         PapildomosInformacijosDAL PIDal = new PapildomosInformacijosDAL();
         [Test]
-        public void GautiVisus_0_rezultatas_AkcijuListDaugiauUz0()
+        public void GautiVisus__rezultatas_GautosVisosAkcijos()
         {
-           List <PapildomaInformacija> VisosPiN = PIDal.GautiVisus();
+            List<PapildomaInformacija> VisosPiN = PIDal.GautiVisus();
             Assert.IsTrue(VisosPiN != null && VisosPiN.Count > 0);
         }
         [Test]
-        public void GautiPagalAkcijosKoda_1VisuPIElementas_rezultatas_PapildomaInformacijaSurasta()
+        public void GautiPagalAkcijosKoda_PirmasVisuPIElementas_rezultatas_PapildomaInformacijaSurasta()
         {
             List<PapildomaInformacija> VisosPiN = PIDal.GautiVisus();
             PapildomaInformacija PI = VisosPiN[0];
 
             PapildomaInformacija GautasPIPagalKoda = PIDal.GautiPagalKoda(PI.AkcijosKodas);
+
             Assert.AreEqual(PI, GautasPIPagalKoda);
         }
         [Test]
-        public void GautiPagalId_1VisuPIElementas_rezultatas_PapildomaInformacijaSurasta()
+        public void GautiPagalId_PirmasVisuPIElementas_rezultatas_PapildomaInformacijaSurasta()
         {
             List<PapildomaInformacija> VisosPiN = PIDal.GautiVisus();
             PapildomaInformacija PI = VisosPiN[0];
 
             PapildomaInformacija GautasPIPagalId = PIDal.GautiPagalId(PI.Id.ToString());
+
             Assert.AreEqual(PI, GautasPIPagalId);
         }
-       [Test]
+        [Test]
         public void Ivesti_PapildomaInformacija_rezultatas_PapildomaInformacijaVisuAkcijuSarase()
         {
             AkcijuDAL TestakcijuDal = new AkcijuDAL("Test");
@@ -45,7 +47,7 @@ namespace DALs_Tests
             PI.Didziausia_Kaina = 0;
             PI.Maziausia_Kaina = 0;
             PI.Vidutine_Kaina = 0;
-            string NaujosAkcijosKodas = "Kodas"+ DateTime.Now.ToString("MM/dd-HH/m/ss");
+            string NaujosAkcijosKodas = "Kodas" + DateTime.Now.ToString("MM/dd-HH/m/ss");
             string NaujosAkcijosPav = "Pavadinimas" + DateTime.Now.ToString("MM/dd-HH/m/ss");
 
 
@@ -56,11 +58,11 @@ namespace DALs_Tests
 
             List<PapildomaInformacija> VisosTestAkcijos = TestPIDAL.GautiVisus();
 
-            Assert.IsTrue(VisosTestAkcijos.Find(x=> x.AkcijosKodas.Equals(PI.AkcijosKodas) && x.Didziausia_Kaina == PI.Didziausia_Kaina && x.Maziausia_Kaina == PI.Maziausia_Kaina && x.Vidutine_Kaina == PI.Vidutine_Kaina) != null);
-        } 
-          [Test]
-          public void Atnaujinti_PapildomaInformacija_rezultatas_AtnaujintaInformacijaVisuPISarase()
-          {
+            Assert.IsTrue(VisosTestAkcijos.Any(x => x.AkcijosKodas.Equals(PI.AkcijosKodas) && x.Didziausia_Kaina == PI.Didziausia_Kaina && x.Maziausia_Kaina == PI.Maziausia_Kaina && x.Vidutine_Kaina == PI.Vidutine_Kaina));
+        }
+        [Test]
+        public void Atnaujinti_PapildomaInformacija_rezultatas_AtnaujintaInformacijaVisuPISarase()
+        {
             PapildomosInformacijosDAL TestPIDAL = new PapildomosInformacijosDAL("Test");
             List<PapildomaInformacija> VisosPI = TestPIDAL.GautiVisus();
             PapildomaInformacija PI = VisosPI[0];
@@ -79,8 +81,8 @@ namespace DALs_Tests
 
         }
         [Test]
-          public void Istrinti_PapildomaInformacija_rezultatas_PapildomuInfromacijuSaraseNeberaTosPI()
-          {
+        public void Istrinti_PapildomaInformacija_rezultatas_PapildomuInfromacijuSaraseNeberaTosPI()
+        {
             AkcijuDAL TestakcijuDal = new AkcijuDAL("Test");
             PapildomosInformacijosDAL TestPIDAL = new PapildomosInformacijosDAL("Test");
             List<PapildomaInformacija> VisosPI = PIDal.GautiVisus();
@@ -105,6 +107,6 @@ namespace DALs_Tests
 
             Assert.IsTrue(NaujaPI != null && VisosTestAkcijos.Find(x => x.AkcijosKodas.Equals(PI.AkcijosKodas) && x.Didziausia_Kaina == PI.Didziausia_Kaina && x.Maziausia_Kaina == PI.Maziausia_Kaina && x.Vidutine_Kaina == PI.Vidutine_Kaina) == null);
 
-          }
+        }
     }
 }

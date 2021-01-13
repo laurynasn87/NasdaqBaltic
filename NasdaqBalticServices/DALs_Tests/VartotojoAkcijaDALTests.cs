@@ -12,7 +12,7 @@ namespace DALs_Tests
 
         VartotojoAkcijaDAL VADal = new VartotojoAkcijaDAL("Test");
         [Test]
-        public void GautiVisus__rezultatas_AkcijuListDaugiauUz0()
+        public void GautiVisus__rezultatas_GautosVisosVartotojuAkcijos()
         {
             List<VartotojoAkcija> VisosVartotojuAkcijos = VADal.GautiVisus();
             Assert.IsTrue(VisosVartotojuAkcijos != null && VisosVartotojuAkcijos.Count > 0);
@@ -28,7 +28,7 @@ namespace DALs_Tests
             Assert.IsTrue(GautaVartotojoAkcijaPagalVartotojoId.Any(x => x.Id == VartotojoAkcija.Id));
         }
         [Test]
-        public void Ivesti_PirmoVartotojoAkcijaBespokePirkimoKaina_rezultatas_VartotojoAkcijaDuomenuBazeje()
+        public void Ivesti_PirmoVartotojoAkcijaBespokePirkimoKaina_rezultatas_VartotojoAkcijaIvesta()
         {
             List<VartotojoAkcija> VisosVartotojuAkcijos = VADal.GautiVisus();
             VartotojoAkcija VartotojoAkcija = VisosVartotojuAkcijos[0];

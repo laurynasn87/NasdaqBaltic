@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <connectionStrings>
-    <add name="Test" connectionString="datasource=127.0.0.1;port=3306;username=root;database=stocks;convert zero datetime=True;Allow Zero Datetime=True"/>
-    <add name="Database" connectionString="datasource=127.0.0.1;port=3306;username=root;database=stockstest;convert zero datetime=True;Allow Zero Datetime=True"/>
+    <add name="Test" connectionString="datasource=127.0.0.1;port=3306;username=root;database=nasdaqbaltic;convert zero datetime=True;Allow Zero Datetime=True"/>
+    <add name="Database" connectionString="datasource=127.0.0.1;port=3306;username=root;database=nasdaqbaltictest;convert zero datetime=True;Allow Zero Datetime=True"/>
     <add name="watchguard" connectionString="Authentication Type=SPLA; Server=127.0.0.1; User ID=root;"/>
     
   </connectionStrings>

@@ -40,5 +40,13 @@ namespace NasdaqBalticGUI_Tests
 
             Assert.IsTrue(PrekiautiLogika.ArDirbaAkcijuBirza(new System.Collections.Generic.List<Models.Akcijos>()) == arDirbaBirza);
         }
+        [Test]
+        public void GautiAkcijosStatistika_PirmaAkcija_rezultatas_GautasAkcijosStatistika()
+        {
+            List<Akcijos> visosAkcijos = PrekiautiLogika.GautiVisasAkcijas();
+
+            Assert.IsTrue(PrekiautiLogika.GautiAkcijosStatistika(visosAkcijos[0].AkcijosKodas)
+                && PrekiautiLogika.MenesioPirkimoReiksmes.Count > 0 && PrekiautiLogika.MenesioPardavimoReiksmes.Count > 0 && PrekiautiLogika.DienosPardavimoReiksmes.Count > 0 && PrekiautiLogika.DienosPirkimoReiksmes.Count > 0);
+        }
     }
 }

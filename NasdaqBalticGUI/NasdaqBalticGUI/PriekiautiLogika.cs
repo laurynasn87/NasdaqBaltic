@@ -7,19 +7,23 @@ using System.Threading.Tasks;
 
 namespace NasdaqBalticGUI
 {
-   public class PriekiautiLogika
+    public class PriekiautiLogika
     {
         ApiKontroleris api = new ApiKontroleris();
         private string AkcijosUrl;
         int BirzosDarboPradziaH = 10;
         int BirzosDarboPabaigaH = 16;
+        public Dictionary<DateTime, double> MenesioPirkimoReiksmes = new Dictionary<DateTime, double>();
+        public Dictionary<DateTime, double> MenesioPardavimoReiksmes = new Dictionary<DateTime, double>();
+        public Dictionary<DateTime, double> DienosPirkimoReiksmes = new Dictionary<DateTime, double>();
+        public Dictionary<DateTime, double> DienosPardavimoReiksmes = new Dictionary<DateTime, double>();
         public PriekiautiLogika()
         {
             AkcijosUrl = api.BaseUrl + "akcijos";
         }
-        public List<Tuple<string, string, int>> LentelesStulpeliaiMapping = new List<Tuple<string, string,int>>() // Lenteles column pav -kintamojo name - width
+        public List<Tuple<string, string, int>> LentelesStulpeliaiMapping = new List<Tuple<string, string, int>>() // Lenteles column pav -kintamojo name - width
             {
-          new Tuple<string, string, int>("Pavadinimas", "Pavadinimas",-1),      
+          new Tuple<string, string, int>("Pavadinimas", "Pavadinimas",-1),
           new Tuple<string, string, int>("Pokytis", "FinansineInformacija.PokytisProcentais",-2),
           new Tuple<string, string, int>("+/-", "FinansineInformacija.Pokytis",-2),
           new Tuple<string, string, int>("Pirkimo K.", "FinansineInformacija.PirkimoKaina",-2),
@@ -44,6 +48,26 @@ namespace NasdaqBalticGUI
 
             return GautasVartotojas;
         }
+        public bool GautiAkcijosStatistika(String AkcijosKodas)
+        {
+            MenesioPirkimoReiksmes = null;
+            MenesioPardavimoReiksmes = null;
+            DienosPirkimoReiksmes = null;
+            DienosPardavimoReiksmes = null;
+            if (!string.IsNullOrEmpty(AkcijosKodas))
+            {
+                Dictionary<string, Dictionary<DateTime, double>> ApiAtsakymas = api.GetApiCallResponseObject<Dictionary<string, Dictionary<DateTime, double>>>(AkcijosUrl + $"/statistika/{AkcijosKodas}");
+                if (ApiAtsakymas != null)
+                {
+                    ApiAtsakymas.TryGetValue("Menesis-Pirkimas", out MenesioPirkimoReiksmes);
+                    ApiAtsakymas.TryGetValue("Menesis-Pardavimas", out MenesioPardavimoReiksmes);
+                    ApiAtsakymas.TryGetValue("Diena-Pirkimas", out DienosPirkimoReiksmes);
+                    ApiAtsakymas.TryGetValue("Diena-Pardavimas", out DienosPardavimoReiksmes);
+                    return true;
+                }
+            }
+            return false;
+        }
         public bool ArDirbaAkcijuBirza(List<Akcijos> gautosAkcijos)
         {
             bool arDirbaBirza = false;
@@ -55,7 +79,7 @@ namespace NasdaqBalticGUI
                     bool arYraTusciu = true;
                     foreach (Akcijos akcijos in gautosAkcijos)
                     {
-                        if ( akcijos.finansineInformacija.PirkimoKaina != 0)
+                        if (akcijos.finansineInformacija.PirkimoKaina != 0)
                         {
                             arYraTusciu = false;
                             break;

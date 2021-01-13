@@ -35,10 +35,10 @@ namespace FoniniaiProcesai
                 }
                 else
                 {
-                    Thread.Sleep(3600000);
+                    Thread.Sleep(10800000);
                 }
 
-                Thread.Sleep(60000);
+                Thread.Sleep(300000);
             }
         }
 

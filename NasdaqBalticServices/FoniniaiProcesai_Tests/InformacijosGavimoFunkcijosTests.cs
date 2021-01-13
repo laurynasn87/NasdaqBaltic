@@ -43,7 +43,7 @@ namespace FoniniaiProcesai_Tests
 
             Akcijos NaujaAkcija = akcijuDAL.GautiPagalKoda(akcijos.AkcijosKodas);
 
-            Assert.IsFalse(akcijos.Pavadinimas.Equals(NaujaAkcija.Pavadinimas));
+            Assert.AreNotEqual(akcijos.Pavadinimas,NaujaAkcija.Pavadinimas);
         }
         [Test]
         public void IrasytiNaujaFinansineInformacija__rezultatas_PridetaNaujaFinansineInformacija()

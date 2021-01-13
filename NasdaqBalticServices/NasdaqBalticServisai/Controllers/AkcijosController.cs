@@ -30,5 +30,16 @@ namespace NasdaqBalticServisai.Controllers
             }
             return BadRequest();
         }
+        // GET Akcijos
+        [System.Web.Http.Route("api/Akcijos/Statistika/{kodas}")]
+        public IHttpActionResult GetStatistika(string kodas)
+        {
+            if (!String.IsNullOrEmpty(kodas))
+            {
+                FinansinesInformacijosDAL FIDAL = new FinansinesInformacijosDAL();
+                return Ok(FIDAL.GautiStatistikas(kodas));
+            }
+            return BadRequest();
+        }
     }
 }

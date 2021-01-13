@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using Models;
 using System;
+using System.Linq;
 
 namespace DALs_Tests
 {
@@ -10,19 +11,22 @@ namespace DALs_Tests
     {
         AkcijuDAL akcijuDAL = new AkcijuDAL();
         [Test]
-        public void GautiVisus_0_rezultatas_AkcijuListDaugiauUz0()
+        public void GautiVisus__rezultatas_GautosVisosAkcijos()
         {
            List <Akcijos> VisosAkcijos = akcijuDAL.GautiVisus();
+
             Assert.IsTrue(VisosAkcijos != null && VisosAkcijos.Count > 0);
         }
         [Test]
-        public void GautiPagalAkcijosKoda_1VisuAkcijuElementas_rezultatas_AkcijaSurasta()
+        public void GautiPagalAkcijosKoda_PirmasVisuAkcijuElementas_rezultatas_AkcijaSurasta()
         {
             List<Akcijos> VisosAkcijos = akcijuDAL.GautiVisus();
             Akcijos akcija = VisosAkcijos[0];
 
             Akcijos GautaAkcijaPagalKoda = akcijuDAL.GautiPagalKoda(akcija.AkcijosKodas);
-            Assert.IsTrue(GautaAkcijaPagalKoda.Equals(akcija));
+
+
+            Assert.AreEqual(akcija,GautaAkcijaPagalKoda);
         }
         [Test]
         public void Ivesti_Akcija_rezultatas_AkcijaVisuAkcijuSarase()
@@ -37,7 +41,7 @@ namespace DALs_Tests
 
             List<Akcijos> VisosTestAkcijos = TestAkcijuDal.GautiVisus();
 
-            Assert.IsTrue(VisosTestAkcijos.Find(x=> x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)) != null);
+            Assert.IsTrue(VisosTestAkcijos.Any(x=> x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)));
         }
         [Test]
         public void Atnaujinti_Akcija_rezultatas_AtnaujintiAkcijaVisuAkcijuSarase()
@@ -55,7 +59,7 @@ namespace DALs_Tests
 
             List<Akcijos> VisosTestAkcijos = TestAkcijuDal.GautiVisus();
 
-            Assert.IsTrue(VisosTestAkcijos.Find(x => x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)) != null);
+            Assert.IsTrue(VisosTestAkcijos.Any(x => x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)));
         }
         [Test]
         public void Istrinti_Akcija_rezultatas_AkcijuSaraseNeberaTosAkcijos()
@@ -72,7 +76,7 @@ namespace DALs_Tests
 
             List<Akcijos> VisosTestAkcijos = TestAkcijuDal.GautiVisus();
 
-            Assert.IsTrue(VisosTestAkcijos.Find(x => x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)) == null);
+            Assert.IsFalse(VisosTestAkcijos.Any(x => x.AkcijosKodas.Equals(akcija.AkcijosKodas) && x.Pavadinimas.Equals(akcija.Pavadinimas)));
         }
     }
 }

@@ -30,6 +30,10 @@ namespace NasdaqBalticGUI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PagrindinisLangas));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -100,16 +104,22 @@ namespace NasdaqBalticGUI
             this.VidKaina = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.MaziKaina = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.InfoSplit = new System.Windows.Forms.TabControl();
+            this.InformacijaTab = new System.Windows.Forms.TabPage();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.KontaktaiKontent = new System.Windows.Forms.Label();
             this.Ataskaita = new System.Windows.Forms.LinkLabel();
-            this.Kontaktai = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.ApieKontent = new System.Windows.Forms.Label();
-            this.Vadyba = new System.Windows.Forms.Label();
-            this.Apie = new System.Windows.Forms.Label();
             this.VaddybaKontentas = new System.Windows.Forms.Label();
+            this.KontaktaiKontent = new System.Windows.Forms.Label();
+            this.Apie = new System.Windows.Forms.Label();
+            this.Vadyba = new System.Windows.Forms.Label();
+            this.Kontaktai = new System.Windows.Forms.Label();
+            this.ApieKontent = new System.Windows.Forms.Label();
+            this.Statistika = new System.Windows.Forms.TabPage();
+            this.diena = new System.Windows.Forms.Button();
+            this.menuo = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.InfoUzsakymo = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.UID = new System.Windows.Forms.TextBox();
@@ -163,8 +173,11 @@ namespace NasdaqBalticGUI
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.InfoSplit.SuspendLayout();
+            this.InformacijaTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.Statistika.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.InfoUzsakymo.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -490,6 +503,7 @@ namespace NasdaqBalticGUI
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.InfoSplit);
             this.splitContainer3.Panel2.Controls.Add(this.groupBox3);
             // 
             // groupBox4
@@ -703,20 +717,28 @@ namespace NasdaqBalticGUI
             this.MaziKaina.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.MaziKaina.Name = "MaziKaina";
             // 
-            // groupBox3
+            // InfoSplit
             // 
-            this.groupBox3.Controls.Add(this.pictureBox7);
-            this.groupBox3.Controls.Add(this.KontaktaiKontent);
-            this.groupBox3.Controls.Add(this.Ataskaita);
-            this.groupBox3.Controls.Add(this.Kontaktai);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.ApieKontent);
-            this.groupBox3.Controls.Add(this.Vadyba);
-            this.groupBox3.Controls.Add(this.Apie);
-            this.groupBox3.Controls.Add(this.VaddybaKontentas);
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            this.InfoSplit.Controls.Add(this.InformacijaTab);
+            this.InfoSplit.Controls.Add(this.Statistika);
+            resources.ApplyResources(this.InfoSplit, "InfoSplit");
+            this.InfoSplit.Name = "InfoSplit";
+            this.InfoSplit.SelectedIndex = 0;
+            // 
+            // InformacijaTab
+            // 
+            this.InformacijaTab.BackColor = System.Drawing.SystemColors.Control;
+            this.InformacijaTab.Controls.Add(this.pictureBox7);
+            this.InformacijaTab.Controls.Add(this.Ataskaita);
+            this.InformacijaTab.Controls.Add(this.label4);
+            this.InformacijaTab.Controls.Add(this.VaddybaKontentas);
+            this.InformacijaTab.Controls.Add(this.KontaktaiKontent);
+            this.InformacijaTab.Controls.Add(this.Apie);
+            this.InformacijaTab.Controls.Add(this.Vadyba);
+            this.InformacijaTab.Controls.Add(this.Kontaktai);
+            this.InformacijaTab.Controls.Add(this.ApieKontent);
+            resources.ApplyResources(this.InformacijaTab, "InformacijaTab");
+            this.InformacijaTab.Name = "InformacijaTab";
             // 
             // pictureBox7
             // 
@@ -727,11 +749,6 @@ namespace NasdaqBalticGUI
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
-            // KontaktaiKontent
-            // 
-            resources.ApplyResources(this.KontaktaiKontent, "KontaktaiKontent");
-            this.KontaktaiKontent.Name = "KontaktaiKontent";
-            // 
             // Ataskaita
             // 
             resources.ApplyResources(this.Ataskaita, "Ataskaita");
@@ -739,35 +756,103 @@ namespace NasdaqBalticGUI
             this.Ataskaita.TabStop = true;
             this.Ataskaita.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Ataskaita_LinkClicked);
             // 
-            // Kontaktai
-            // 
-            resources.ApplyResources(this.Kontaktai, "Kontaktai");
-            this.Kontaktai.Name = "Kontaktai";
-            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
-            // ApieKontent
+            // VaddybaKontentas
             // 
-            resources.ApplyResources(this.ApieKontent, "ApieKontent");
-            this.ApieKontent.Name = "ApieKontent";
+            resources.ApplyResources(this.VaddybaKontentas, "VaddybaKontentas");
+            this.VaddybaKontentas.Name = "VaddybaKontentas";
             // 
-            // Vadyba
+            // KontaktaiKontent
             // 
-            resources.ApplyResources(this.Vadyba, "Vadyba");
-            this.Vadyba.Name = "Vadyba";
+            resources.ApplyResources(this.KontaktaiKontent, "KontaktaiKontent");
+            this.KontaktaiKontent.Name = "KontaktaiKontent";
             // 
             // Apie
             // 
             resources.ApplyResources(this.Apie, "Apie");
             this.Apie.Name = "Apie";
             // 
-            // VaddybaKontentas
+            // Vadyba
             // 
-            resources.ApplyResources(this.VaddybaKontentas, "VaddybaKontentas");
-            this.VaddybaKontentas.Name = "VaddybaKontentas";
+            resources.ApplyResources(this.Vadyba, "Vadyba");
+            this.Vadyba.Name = "Vadyba";
+            // 
+            // Kontaktai
+            // 
+            resources.ApplyResources(this.Kontaktai, "Kontaktai");
+            this.Kontaktai.Name = "Kontaktai";
+            // 
+            // ApieKontent
+            // 
+            resources.ApplyResources(this.ApieKontent, "ApieKontent");
+            this.ApieKontent.Name = "ApieKontent";
+            // 
+            // Statistika
+            // 
+            this.Statistika.BackColor = System.Drawing.SystemColors.Control;
+            this.Statistika.Controls.Add(this.diena);
+            this.Statistika.Controls.Add(this.menuo);
+            this.Statistika.Controls.Add(this.chart1);
+            resources.ApplyResources(this.Statistika, "Statistika");
+            this.Statistika.Name = "Statistika";
+            // 
+            // diena
+            // 
+            resources.ApplyResources(this.diena, "diena");
+            this.diena.Name = "diena";
+            this.diena.UseVisualStyleBackColor = true;
+            this.diena.Click += new System.EventHandler(this.diena_Click);
+            // 
+            // menuo
+            // 
+            resources.ApplyResources(this.menuo, "menuo");
+            this.menuo.Name = "menuo";
+            this.menuo.UseVisualStyleBackColor = true;
+            this.menuo.Click += new System.EventHandler(this.menuo_Click);
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.SystemColors.Control;
+            this.chart1.BorderlineColor = System.Drawing.Color.SaddleBrown;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            legend1.MaximumAutoSize = 40F;
+            legend1.Name = "Legend1";
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            legend1.TitleSeparator = System.Windows.Forms.DataVisualization.Charting.LegendSeparatorStyle.DotLine;
+            this.chart1.Legends.Add(legend1);
+            resources.ApplyResources(this.chart1, "chart1");
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
+            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Crimson;
+            series1.IsValueShownAsLabel = true;
+            series1.Legend = "Legend1";
+            series1.Name = "Pirkimo K.";
+            series1.YValuesPerPoint = 6;
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Color = System.Drawing.Color.Green;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Pardavimo K.";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            // 
+            // groupBox3
+            // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
             // 
             // InfoUzsakymo
             // 
@@ -974,10 +1059,10 @@ namespace NasdaqBalticGUI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AkcijosInformacija);
             this.Controls.Add(this.InfoUzsakymo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.AkcijosInformacija);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "PagrindinisLangas";
@@ -1016,9 +1101,12 @@ namespace NasdaqBalticGUI
             this.splitContainer3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.InfoSplit.ResumeLayout(false);
+            this.InformacijaTab.ResumeLayout(false);
+            this.InformacijaTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.Statistika.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.InfoUzsakymo.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -1135,5 +1223,11 @@ namespace NasdaqBalticGUI
         private System.Windows.Forms.Label Verte;
         private System.Windows.Forms.Label VerteValue;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TabControl InfoSplit;
+        private System.Windows.Forms.TabPage InformacijaTab;
+        private System.Windows.Forms.TabPage Statistika;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Button diena;
+        private System.Windows.Forms.Button menuo;
     }
 }

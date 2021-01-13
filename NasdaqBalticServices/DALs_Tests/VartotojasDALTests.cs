@@ -11,7 +11,7 @@ namespace DALs_Tests
     {
         VartotojasDAL VartotojuDal = new VartotojasDAL("Test");
          [Test]
-         public void GautiVisus_0_rezultatas_AkcijuListDaugiauUz0()
+         public void GautiVisus__rezultatas_GautosVisiVartotojai()
          {
             List <Vartotojas> Vartotojai = VartotojuDal.GautiVisus();
              Assert.IsTrue(Vartotojai != null && Vartotojai.Count > 0);
@@ -38,7 +38,7 @@ namespace DALs_Tests
             VartotojuDal.Atnaujinti(vartotojas);
             Vartotojas vartotojasIsDb = VartotojuDal.GautiPagalId(vartotojas.Id.ToString());
 
-            Assert.IsTrue(vartotojas.Vardas.Equals(vartotojasIsDb.Vardas));
+            Assert.AreEqual(vartotojas.Vardas,vartotojasIsDb.Vardas);
           }
         [Test]
         public void AtnaujintiBalansa_Vartotojas_rezultatas_VartotojasAtnaujintasDuomBazeje()
@@ -51,7 +51,7 @@ namespace DALs_Tests
             VartotojuDal.AtnaujintiBalansa(vartotojas);
             Vartotojas vartotojasIsDb = VartotojuDal.GautiPagalId(vartotojas.Id.ToString());
 
-            Assert.IsTrue(vartotojas.Balansas.Equals(vartotojasIsDb.Balansas));
+            Assert.AreEqual(vartotojas.Balansas,vartotojasIsDb.Balansas);
         }
 
     }

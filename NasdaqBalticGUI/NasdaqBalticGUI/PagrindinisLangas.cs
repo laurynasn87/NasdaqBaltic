@@ -441,7 +441,7 @@ namespace NasdaqBalticGUI
                 Akcijos PasirinktaAkcija = DabartinesPirkimoAkcijos.Find(x => x.Pavadinimas.Trim().Equals(PasirinktasElementas.SubItems[0].Text));
                 if (PasirinktaAkcija != null)
                 {
-                    AtidarytiInformacijosLanga(PasirinktaAkcija, PriekiautiLangas.ArDirbaAkcijuBirza(DabartinesPirkimoAkcijos));
+                    AtidarytiInformacijosLanga(PasirinktaAkcija);
                 }
             }
             if (selected == 2)
@@ -540,18 +540,19 @@ namespace NasdaqBalticGUI
 
 
         }
-        void AtidarytiInformacijosLanga(Akcijos Akcija, bool BirzaAtidaryta)
+        void AtidarytiInformacijosLanga(Akcijos Akcija)
         {
+            InfoSplit.SelectedIndex = 0;
             PasirinktaAkcija = Akcija;
             PavadinimasImones.Text = Akcija.Pavadinimas;
             AkcijosKodas.Text = Akcija.AkcijosKodas;
 
             AkcijosInformacija.BringToFront();
             AkcijosInformacija.Visible = true;
-            PirktiKiekis.Visible = BirzaAtidaryta;
-            ParduotiKiekis.Visible = BirzaAtidaryta;
-            PardavimoKiekisKaina.Visible = BirzaAtidaryta;
-            PirkimoKiekisKaina.Visible = BirzaAtidaryta;
+            PirktiKiekis.Visible = false;
+            ParduotiKiekis.Visible = false;
+            PardavimoKiekisKaina.Visible = false;
+            PirkimoKiekisKaina.Visible = false;
 
 
             DataInformacijos.Text = Akcija.finansineInformacija.Timestamp.ToString("yyyy-MM-dd HH:mm");
@@ -592,6 +593,41 @@ namespace NasdaqBalticGUI
             Ataskaita.Links.Clear();
             Ataskaita.Links.Add(0, 0, Akcija.papildomaInformacija.AtaskaitosURL);
 
+            initStatistika(Akcija.AkcijosKodas);
+
+        }
+
+        private void initStatistika(string akcijosKodas)
+        {
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
+
+
+            if (PriekiautiLangas.GautiAkcijosStatistika(akcijosKodas))
+            {
+                SudetiChartReiksmes(PriekiautiLangas.MenesioPirkimoReiksmes, PriekiautiLangas.MenesioPardavimoReiksmes,"Day");
+            }
+        }
+        private void SudetiChartReiksmes(Dictionary<DateTime, double> PirkimoReiksmes, Dictionary<DateTime, double> PardavimoReiksmes, string PropValue)
+        {
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
+            if (!string.IsNullOrEmpty(PropValue))
+            {
+                foreach (KeyValuePair<DateTime, double> PirkimoReiksme in PirkimoReiksmes)
+                {
+                    String xReiksme = GetPropValue(PirkimoReiksme.Key, PropValue).ToString();
+                    if (!string.IsNullOrEmpty(xReiksme))
+                        chart1.Series[0].Points.AddXY(xReiksme, Math.Round(PirkimoReiksme.Value, 3));
+                }
+                foreach (KeyValuePair<DateTime, double> Pardavimoreiksme in PardavimoReiksmes)
+                {
+                    String xReiksme = GetPropValue(Pardavimoreiksme.Key, PropValue).ToString();
+                    if (!string.IsNullOrEmpty(xReiksme))
+                        chart1.Series[1].Points.AddXY(xReiksme, Math.Round(Pardavimoreiksme.Value, 3));
+                }
+            }
+
         }
         private void Ataskaita_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -619,6 +655,7 @@ namespace NasdaqBalticGUI
                 input = input.Replace("rdquo;", "”");
                 input = input.Replace("nbsp;", " ");
                 input = input.Replace("otilde;", "õ");
+                input = input.Replace("auml;", "ä");
             }
             return input;
         }
@@ -733,6 +770,22 @@ namespace NasdaqBalticGUI
                 {
                     MessageBox.Show("Nepavyko uždaryti");
                 }
+            }
+        }
+
+        private void menuo_Click(object sender, EventArgs e)
+        {
+            if (PriekiautiLangas.MenesioPardavimoReiksmes.Count > 0 && PriekiautiLangas.MenesioPirkimoReiksmes.Count > 0)
+            {
+                SudetiChartReiksmes(PriekiautiLangas.MenesioPirkimoReiksmes, PriekiautiLangas.MenesioPardavimoReiksmes,"Day");
+            }
+        }
+
+        private void diena_Click(object sender, EventArgs e)
+        {
+            if (PriekiautiLangas.DienosPardavimoReiksmes.Count > 0 && PriekiautiLangas.DienosPirkimoReiksmes.Count > 0)
+            {
+                SudetiChartReiksmes(PriekiautiLangas.DienosPirkimoReiksmes, PriekiautiLangas.DienosPardavimoReiksmes,"Hour");
             }
         }
     }
