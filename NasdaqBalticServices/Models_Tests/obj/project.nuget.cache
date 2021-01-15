@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "870QNiuWt1sbcpXPoGGw3QyL/mgei0nBxuQApvBLFBM2aEGRq2r9Z13OEUAQKqpiOGWpi88BdEoA7BlxW0C7zg==",
+  "dgSpecHash": "gAmcJuavoYJRtse7HjVa2LfF4IF+gIKYnflpRTpyw3HVTl/2Bn10Bx83wWdor4Xw9Lc5DWUUgw/W+LLhzB/HXw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laurynas\\source\\repos\\NasdaqBaltic\\NasdaqBaltic\\NasdaqBalticServices\\Models_Tests\\Models_Tests.csproj",
   "expectedPackageFiles": [
@@ -19,6 +19,7 @@
     "C:\\Users\\Laurynas\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",
+    "C:\\Users\\Laurynas\\.nuget\\packages\\opencover\\4.7.922\\opencover.4.7.922.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",

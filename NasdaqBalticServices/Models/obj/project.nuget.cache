@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "abWB8SfV0yNTshCl05yr7Kf7V/4coJ/H2ZhW5gJZW5wCbdTPuyszVBY5GxMwep/OQDEq6YV3Rp7MxEuaPtQiuA==",
+  "dgSpecHash": "Oq8TzWokZe4lquPMOqM6l7O8L7Lw1Kq245ImUITyTy3abUKEmIZvF6jEDGfQWoaH+FhZW0tXhmxY4d+1Cj8rog==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laurynas\\source\\repos\\NasdaqBaltic\\NasdaqBaltic\\NasdaqBalticServices\\Models\\Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Laurynas\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Laurynas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\Laurynas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Laurynas\\.nuget\\packages\\opencover\\4.7.922\\opencover.4.7.922.nupkg.sha512"
   ],
   "logs": []
 }

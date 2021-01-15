@@ -457,7 +457,7 @@ namespace FoniniaiProcesai
         private string PasalintiNereikalingusSimbolius(String st)
         {
             if (!string.IsNullOrEmpty(st))
-            return st.Replace("\n", "").Replace("\r", "").Replace("!", "").Replace("&amp", "&").Replace("&nbsp;", " ").Trim();
+            return st.Replace("\n", "").Replace("\r", "").Replace("!", "").Replace("&amp", "&").Replace("quot;", "'").Replace("&nbsp;", " ").Trim();
             return st;
         }
         private Akcijos ListToAkcija(List<Tuple<string, string>> tuples)

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.22" />
+    <PackageReference Include="OpenCover" Version="4.7.922" />
   </ItemGroup>
 
   <ItemGroup>

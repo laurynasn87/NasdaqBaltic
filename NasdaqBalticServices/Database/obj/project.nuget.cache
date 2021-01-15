@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "k6E84AM/R0Q0VBauuqTph16lTO1u/8mHjdfiLP0ucP1AUcaGyp/exqD76fVkGCGW9eHTC5m1uxN6MteGcxO6qA==",
+  "dgSpecHash": "chylJwGoFP/L4A6zQ147nJSy6wLnPYNTxIfTqhbQ4HBnvYJTFWvIcLZsErgHMgyS4kvOqdCCjPxKQHpksAdmQQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laurynas\\source\\repos\\NasdaqBaltic\\NasdaqBaltic\\NasdaqBalticServices\\Database\\Database.csproj",
   "expectedPackageFiles": [
@@ -14,6 +14,7 @@
     "C:\\Users\\Laurynas\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\mysql.data\\8.0.22\\mysql.data.8.0.22.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Laurynas\\.nuget\\packages\\opencover\\4.7.922\\opencover.4.7.922.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\runtime.native.system.security.cryptography\\4.0.0\\runtime.native.system.security.cryptography.4.0.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\ssh.net\\2016.1.0\\ssh.net.2016.1.0.nupkg.sha512",

@@ -10,7 +10,8 @@
         "dependencies": {
           "DALs": "1.0.0",
           "HtmlAgilityPack": "1.11.29",
-          "Models": "1.0.0"
+          "Models": "1.0.0",
+          "OpenCover": "4.7.922"
         },
         "runtime": {
           "FoniniaiProcesai.dll": {}
@@ -150,6 +151,7 @@
           }
         }
       },
+      "OpenCover/4.7.922": {},
       "runtime.native.System/4.0.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -764,7 +766,8 @@
         "dependencies": {
           "Database": "1.0.0",
           "Models": "1.0.0",
-          "MySql.Data": "8.0.22"
+          "MySql.Data": "8.0.22",
+          "OpenCover": "4.7.922"
         },
         "runtime": {
           "DALs.dll": {}
@@ -772,13 +775,17 @@
       },
       "Database/1.0.0": {
         "dependencies": {
-          "MySql.Data": "8.0.22"
+          "MySql.Data": "8.0.22",
+          "OpenCover": "4.7.922"
         },
         "runtime": {
           "Database.dll": {}
         }
       },
       "Models/1.0.0": {
+        "dependencies": {
+          "OpenCover": "4.7.922"
+        },
         "runtime": {
           "Models.dll": {}
         }
@@ -867,6 +874,13 @@
       "sha512": "sha512-DTKXORgTwQLbAjl8g5+YhvrAB+peQLfAZQ7gbm5Ejma37f/vBtZqP5aTnqZoJUzaQQgj4Psgdcnlo6IwYedyCg==",
       "path": "mysql.data/8.0.22",
       "hashPath": "mysql.data.8.0.22.nupkg.sha512"
+    },
+    "OpenCover/4.7.922": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Mwqq3r8cHj7qazNzWp1K9zmU15amC9bzMvFK83zM4D+ATSN/IOkJGZh6kEvXnTVJjl6LN6U/4QCdRHxulAISuA==",
+      "path": "opencover/4.7.922",
+      "hashPath": "opencover.4.7.922.nupkg.sha512"
     },
     "runtime.native.System/4.0.0": {
       "type": "package",

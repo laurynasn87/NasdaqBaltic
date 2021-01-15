@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "LFcVmV9SOCMx5Cv+OiOucOl4zspjoJg0Zw+WjiOMi5SD97AtYTJsHfMY3TnIScXSevxHDj/ZWU6a6A8+XdIvrQ==",
+  "dgSpecHash": "9iWzkJ4pgR5gn3EKkdjk9oqBVeARCzxgxzBiljtM9imQtPBfhsbuHq7rQE4h+MZ8KrfTgIKmjHWHgfEVNkY6Yg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Laurynas\\source\\repos\\NasdaqBaltic\\NasdaqBaltic\\NasdaqBalticServices\\DALs_Tests\\DALs_Tests.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "C:\\Users\\Laurynas\\.nuget\\packages\\nuget.frameworks\\5.0.0\\nuget.frameworks.5.0.0.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\nunit\\3.12.0\\nunit.3.12.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\nunit3testadapter\\3.16.1\\nunit3testadapter.3.16.1.nupkg.sha512",
+    "C:\\Users\\Laurynas\\.nuget\\packages\\opencover\\4.7.922\\opencover.4.7.922.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\runtime.native.system.security.cryptography\\4.0.0\\runtime.native.system.security.cryptography.4.0.0.nupkg.sha512",
     "C:\\Users\\Laurynas\\.nuget\\packages\\ssh.net\\2016.1.0\\ssh.net.2016.1.0.nupkg.sha512",

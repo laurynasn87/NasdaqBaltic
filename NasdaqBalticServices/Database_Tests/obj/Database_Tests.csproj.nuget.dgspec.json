@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "OpenCover": {
+              "target": "Package",
+              "version": "[4.7.922, )"
             }
           },
           "imports": [
@@ -124,6 +128,10 @@
             "NUnit3TestAdapter": {
               "target": "Package",
               "version": "[3.16.1, )"
+            },
+            "OpenCover": {
+              "target": "Package",
+              "version": "[4.7.922, )"
             }
           },
           "imports": [
