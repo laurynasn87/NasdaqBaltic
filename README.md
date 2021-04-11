@@ -34,3 +34,7 @@ Nuotraukos:
  
 
 
+##### Informacijos Gavimas:
+Visa informacija yra nuskaitoma is nasdaq mano sukurto scraper.
+Visa turima informacija:
+    ![Turima informacija](https://github.com/laurynasn87/NasdaqBaltic/blob/main/Turima%20informacija.png?raw=true)
